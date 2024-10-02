@@ -1,0 +1,9 @@
+{
+  "id":"verticalprogress",
+  "name":"Vertical Progress Bar",
+  "set":"thermometers",
+  "order":2,
+  "physics":"height",
+  "premium":true,
+  "image":"verticalprogress.jpg"
+}

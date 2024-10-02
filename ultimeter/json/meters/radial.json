@@ -1,0 +1,9 @@
+{
+  "id":"radial",
+  "name":"Radial",
+  "set":"radial_meters",
+  "order":0,
+  "physics":"radial",
+  "premium":true,
+  "image":"radial.jpg"
+}

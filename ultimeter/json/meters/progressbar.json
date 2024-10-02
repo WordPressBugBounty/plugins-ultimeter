@@ -1,0 +1,9 @@
+{
+  "id":"progressbar",
+  "name":"Progress Bar",
+  "set":"progress_bars",
+  "order":0,
+  "physics":"width",
+  "premium":false,
+  "image":"progressbar.png"
+}

@@ -1,0 +1,1148 @@
+/** Start 20203 Rebuild ***********************************************************************************************/
+.csf-field-select .chosen-container {
+  width: 50% !important;
+}
+
+.csf-field-group .csf-cloneable-header-icon {
+  vertical-align: unset;
+}
+
+.csf-field-group .csf-cloneable-wrapper {
+  margin-bottom: 20px;
+}
+
+.progressbar .csf--image {
+  width: 300px;
+}
+
+.csf-field-connected_image_select .csf--image-group, .csf-field-image_select_style_packs .csf--image-group {
+  display: flex;
+}
+.csf-field-connected_image_select .csf--image, .csf-field-image_select_style_packs .csf--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px 5px 0;
+  padding: 15px;
+}
+.csf-field-connected_image_select .csf--image.csf--free, .csf-field-image_select_style_packs .csf--image.csf--free {
+  opacity: 0.25;
+}
+.csf-field-connected_image_select .csf--image.csf--free figure, .csf-field-image_select_style_packs .csf--image.csf--free figure {
+  cursor: auto;
+}
+.csf-field-connected_image_select .csf--image figure, .csf-field-image_select_style_packs .csf--image figure {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  vertical-align: bottom;
+  border: 2px solid transparent;
+  background-color: #fff;
+  user-select: none;
+  transition: all 0.2s;
+}
+.csf-field-connected_image_select .csf--image figure:before, .csf-field-image_select_style_packs .csf--image figure:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 10px;
+  font-family: "Font Awesome 5 Pro", "Font Awesome 5 Free", "FontAwesome";
+  font-weight: 900;
+  content: "\f00c";
+  width: 16px;
+  height: 16px;
+  line-height: 14px;
+  opacity: 0;
+  color: #fff;
+  background-color: #222;
+  transition: opacity 0.2s;
+}
+.csf-field-connected_image_select .csf--image.csf--active figure, .csf-field-image_select_style_packs .csf--image.csf--active figure {
+  border-color: #222;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.csf-field-connected_image_select .csf--image.csf--active figure:before, .csf-field-image_select_style_packs .csf--image.csf--active figure:before {
+  opacity: 1;
+}
+.csf-field-connected_image_select .csf--image img, .csf-field-image_select_style_packs .csf--image img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.csf-field-connected_image_select .csf--image input, .csf-field-image_select_style_packs .csf--image input {
+  display: none;
+}
+
+.csf-field-connected_image_select .csf-connected-image-select-group-container {
+  display: flex;
+  flex-direction: column;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group {
+  position: relative;
+  margin: 2.5px 0;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group h4 {
+  font-size: 1em;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 15px;
+  min-height: 0;
+  font-size: 100%;
+  user-select: none;
+  border: 1px solid #ccd0d4;
+  background-color: #fafafa;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:active, .csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:hover, .csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:focus {
+  outline: none;
+  border-color: #999;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title .csf--icon {
+  width: 20px;
+  text-align: center;
+  margin-right: 2px;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title .csf-set-icon {
+  width: 16px;
+  text-align: center;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-content {
+  display: none;
+  padding: 0;
+  border: 1px solid #ccd0d4;
+  border-top: none;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-content.csf-connected-image-select-group-content-open {
+  display: flex;
+}
+
+/** End 2023 Rebuild **************************************************************************************************/
+.panelpush {
+  margin-left: 200px;
+}
+
+.ultimeter-shortcode-button, .ultimeter-duplicate-button {
+  width: 136px;
+}
+.ultimeter-shortcode-button .dashicons, .ultimeter-duplicate-button .dashicons {
+  font-size: 16px;
+  width: 16px;
+  vertical-align: middle;
+  color: #909090;
+  margin-right: 2px;
+}
+.ultimeter-shortcode-button .dashicons-yes, .ultimeter-duplicate-button .dashicons-yes {
+  color: green;
+}
+.ultimeter-shortcode-button:hover, .ultimeter-duplicate-button:hover {
+  color: #555;
+}
+.ultimeter-shortcode-button:hover .dashicons, .ultimeter-duplicate-button:hover .dashicons {
+  color: #555;
+}
+.ultimeter-shortcode-button:after, .ultimeter-duplicate-button:after {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: none;
+}
+
+.ultimeter-ID span:before {
+  font: normal 20px/1 dashicons;
+  speak: never;
+  display: inline-block;
+  margin-left: -1px;
+  padding-right: 3px;
+  vertical-align: top;
+  -webkit-font-smoothing: antialiased;
+  content: "\f323";
+  position: relative;
+  top: -1px;
+  color: #82878c;
+}
+
+.post-type-ultimeter #wpcontent {
+  padding: 0;
+}
+.post-type-ultimeter #wpbody {
+  color: #000;
+  padding-left: 20px;
+  position: relative;
+}
+.post-type-ultimeter #wpbody:after {
+  content: "";
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  height: 72px;
+  left: 0;
+  top: 46px;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter #wpbody:after {
+    top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .post-type-ultimeter #wpbody #screen-meta-links {
+    display: none;
+  }
+}
+.post-type-ultimeter .wp-heading-inline {
+  padding: 10px 0px;
+}
+.post-type-ultimeter .wp-heading-inline:before {
+  background: url(../images/icon.svg);
+  width: 30px;
+  height: 30px;
+  content: " ";
+  display: block;
+  float: left;
+  margin-right: 12px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.post-type-ultimeter .wp-header-end {
+  margin-top: 15px;
+}
+@media (max-width: 782px) {
+  .post-type-ultimeter .wrap {
+    clear: none;
+  }
+}
+.post-type-ultimeter.ultimeter_page_ultimeter-account #wpbody:after {
+  display: none;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter.ultimeter_page_ultimeter-account #wpbody:after {
+    top: 0;
+  }
+}
+.post-type-ultimeter.ultimeter_page_ultimeter-pricing #wpbody:after {
+  display: none;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter.ultimeter_page_ultimeter-pricing #wpbody:after {
+    top: 0;
+  }
+}
+.post-type-ultimeter.ultimeter_page_ultimeter-contact #wpbody:after {
+  display: none;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter.ultimeter_page_ultimeter-contact #wpbody:after {
+    top: 0;
+  }
+}
+.post-type-ultimeter.ultimeter_page_ultimeter-support #wpbody:after {
+  display: none;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter.ultimeter_page_ultimeter-support #wpbody:after {
+    top: 0;
+  }
+}
+.post-type-ultimeter.ultimeter_page_ultimeter-addons #wpbody:after {
+  display: none;
+}
+@media (min-width: 600px) {
+  .post-type-ultimeter.ultimeter_page_ultimeter-addons #wpbody:after {
+    top: 0;
+  }
+}
+
+/* Style the notice dismiss button */
+.ultimeter-notice {
+  position: relative;
+  padding-right: 30px;
+}
+
+.ultimeter-notice-dismiss {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  border: none;
+  margin: 0;
+  padding: 9px;
+  background: 0 0;
+  color: #72777c;
+  cursor: pointer;
+}
+.ultimeter-notice-dismiss:before {
+  background: 0 0;
+  color: #72777c;
+  content: "\f153";
+  display: block;
+  font: normal 16px/20px dashicons;
+  speak: none;
+  height: 20px;
+  text-align: center;
+  width: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ultimeter-blank-slate {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+}
+.ultimeter-blank-slate .ultimeter-blank-slate-image {
+  display: block;
+  height: 80px !important;
+  margin: 0 auto 10px;
+  width: auto;
+}
+.ultimeter-blank-slate .ultimeter-blank-slate-heading {
+  margin: 0 0 10px;
+}
+.ultimeter-blank-slate .ultimeter-blank-slate-cta {
+  display: inline-block;
+  font-size: 1.2em;
+  height: auto;
+  margin: 0 0 10px;
+  padding: 0.75em 1.5em;
+}
+.ultimeter-blank-slate .ultimeter-blank-slate-help {
+  color: #666;
+  font-style: italic;
+}
+
+.ultimeter-docs-link {
+  text-align: right;
+  margin-right: 15px;
+}
+.ultimeter-docs-link a {
+  color: #606060;
+  text-decoration: none;
+  font-style: italic;
+}
+.ultimeter-docs-link a span {
+  font-style: normal;
+}
+
+#configure-ultimeter .inside {
+  margin: 0;
+  padding: 0;
+}
+
+#configure-ultimeter .ultimeter-metabox-panel-wrap {
+  background: #fff;
+  overflow: hidden;
+}
+
+#configure-ultimeter .ultimeter-metabox-tabs {
+  margin: 0;
+  max-width: 170px;
+  float: left;
+  line-height: 1em;
+  padding: 0 0 10px;
+  position: relative;
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+  box-sizing: border-box;
+}
+#configure-ultimeter .ultimeter-metabox-tabs:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 9999em;
+  position: absolute;
+  bottom: -9999em;
+  left: 0;
+  background-color: #fafafa;
+  border-right: 1px solid #eee;
+}
+#configure-ultimeter .ultimeter-metabox-tabs li {
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+#configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon svg {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+#configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon svg path:not(.givewp-icon), #configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon svg rect:not(.givewp-icon), #configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon svg line:not(.givewp-icon) {
+  fill: #f6a500;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon svg {
+    margin-right: 0px;
+  }
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter-metabox-tabs li .ultimeter-icon:before {
+    margin: 0;
+  }
+}
+#configure-ultimeter .ultimeter-metabox-tabs li a {
+  margin: 0;
+  padding: 10px;
+  display: block;
+  box-shadow: none;
+  text-decoration: none;
+  line-height: 20px !important;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter-metabox-tabs li a {
+    text-align: center;
+  }
+  #configure-ultimeter .ultimeter-metabox-tabs li a:before {
+    margin-right: 0;
+    font-size: 15px;
+  }
+}
+#configure-ultimeter .ultimeter-metabox-tabs li a span.ultimeter-label {
+  width: 114px;
+  display: inline-block;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter-metabox-tabs li a span.ultimeter-label {
+    display: none;
+  }
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter-metabox-tabs {
+    min-width: 40px;
+  }
+}
+#configure-ultimeter .ultimeter-metabox-tabs .ultimeter-metabox-message {
+  padding: 10px;
+  color: #0073aa;
+}
+#configure-ultimeter .ultimeter-metabox-tabs .ultimeter-metabox-message p {
+  line-height: 1.4;
+  margin: 0px;
+  font-weight: 700;
+}
+
+#configure-ultimeter .ultimeter_options_panel {
+  padding-left: 170px;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter_options_panel {
+    padding-left: 40px;
+  }
+}
+#configure-ultimeter .ultimeter_options_panel label span.ultimeter-pro-text {
+  color: #f6a500;
+  font-style: italic;
+}
+#configure-ultimeter .ultimeter_options_panel label span.ultimeter-pro-text a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+#configure-ultimeter .ultimeter_options_panel label span.ultimeter-pro-text a:hover {
+  font-weight: bold;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-inline-radio-fields li {
+  display: inline-block;
+  margin-right: 15px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-radios li label input {
+  margin-right: 10px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-textarea {
+  width: 100%;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap {
+  padding: 1em 20px 1em 162px;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-integration-logo {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap.unborder {
+  border-bottom: 0px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap.fieldset-header {
+  margin-bottom: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap.fieldset-header h4 {
+  margin-top: 0px;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap {
+    padding: 10px;
+  }
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap ul {
+  margin: 0;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-field-description {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 18px;
+  display: block;
+  padding-top: 10px;
+  font-style: italic;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap > span.ultimeter-field-label {
+  float: left;
+  width: 135px;
+  padding: 0;
+  margin: 2px 0 0 -150px;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: 400;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap > span.ultimeter-field-label img {
+  max-width: 135px;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap > span.ultimeter-field-label {
+    display: block;
+    float: none;
+    margin: 0 0 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap img.ultimeter-image-disabled {
+  margin: 60px 20px 40px;
+  max-width: 90%;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-money-symbol, #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-percent-symbol {
+  border: 1px solid #ddd;
+  border-right-color: rgb(221, 221, 221);
+  border-right-style: solid;
+  border-right-width: 1px;
+  background: #fcfcfc;
+  margin: 0;
+  margin-right: 0px;
+  font-size: 14px;
+  padding: 5px 8px;
+  vertical-align: middle;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-input-span {
+  border: 1px solid #ddd;
+  background: #fcfcfc;
+  font-size: 14px;
+  padding: 5px 8px;
+  vertical-align: middle;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-input-span.ultimeter-input-span-before {
+  border-right: 0px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-input-span.ultimeter-input-span-after {
+  border-left: 0px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-woocommerce {
+  width: 200px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-money-symbol-before {
+  border-right: 0;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-percent-field, #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-money-field, #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-custom-field {
+  width: 75px;
+  margin-right: 0;
+  margin-left: 0;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-field-custom {
+  width: 155px !important;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-text-only-field {
+  border: 0px;
+  font-weight: bold;
+  background: none;
+  vertical-align: initial;
+  height: auto;
+  padding: 0px;
+  cursor: pointer;
+  text-align: right;
+  width: 43px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-text-only-field:focus {
+  box-shadow: none;
+  outline: 0px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ui-slider {
+  margin: 20px auto;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ui-slider .ui-slider-handle {
+  background: #f6a500;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input.ultimeter-text_small {
+  width: 100px !important;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input.ultimeter-text_medium {
+  width: 200px !important;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=email], #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=text], #configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=number] {
+  padding: 5px;
+  height: 31px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=number]::-webkit-inner-spin-button,
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap input[type=number] {
+  -moz-appearance: textfield;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-image-thumb {
+  position: relative;
+  margin-top: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-image-thumb img {
+  max-width: 250px;
+  border: 4px solid #fff;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap .ultimeter-image-thumb span.ultimeter-delete-image-thumb {
+  position: absolute;
+  background: red;
+  color: #fff;
+  border-radius: 30px;
+  left: -10px;
+  top: -10px;
+  cursor: pointer;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields {
+  /* PRO version only */
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields label > input {
+  /* HIDE RADIO */
+  visibility: hidden;
+  /* Makes input not-clickable */
+  position: absolute;
+  /* Remove input from document flow */
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields label > input + img {
+  /* IMAGE STYLES */
+  cursor: pointer;
+  border: 3px solid lightgrey;
+  border-radius: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields label > input + img:hover {
+  border-color: #f6a500;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields label > input:checked + img {
+  /* (RADIO CHECKED) IMAGE STYLES */
+  border-color: #f6a500;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-image-radio-fields label.readonly {
+  cursor: not-allowed;
+  border: 2px solid transparent;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section {
+  padding: 10px;
+  background: #f5f5f5;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-repeatable-fields-section-wrapper {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-template {
+  display: none;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-row {
+  border-bottom: 15px solid #f5f5f5;
+  background-color: #fff;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-column {
+  padding: 0;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-row-head {
+  border-bottom: 1px solid #eee;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-row-head h2 {
+  text-align: left !important;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-row-head h2 .ultimeter-milestone-id {
+  color: #aaa;
+  font-size: 12px;
+  line-height: 18px;
+  padding-top: 10px;
+  font-style: italic;
+  display: none;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-remove {
+  float: right;
+  line-height: 34px;
+  font-size: 21px;
+  margin-right: 5px;
+  color: #72777c;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-remove:before {
+  cursor: pointer;
+  content: "\f182";
+  display: inline-block;
+  font: normal 20px/1 dashicons;
+  text-decoration: none !important;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-remove:hover {
+  color: red;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-add-repeater-field-section-row-wrap {
+  background-color: #f5f5f5;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-repeatable-field-section .ultimeter-add-repeater-field-section-row {
+  margin: 5px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-field-wrap:last-child {
+  border-bottom: 1px solid #eee;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser {
+  padding: 10px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser h1 span, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser h1 span {
+  color: #f6a500;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser h2, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser h2 {
+  padding-left: 0px;
+  font-weight: bold;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser h2 span, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser h2 span {
+  color: greenyellow;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser ul, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser ul {
+  list-style: none;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser ul li, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser ul li {
+  text-indent: -20px;
+  padding-left: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser ul li:before, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser ul li:before {
+  content: "+";
+  color: #f6a500;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-milestones-teaser ul li img, #configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser ul li img {
+  max-width: 90%;
+  display: block;
+}
+#configure-ultimeter .ultimeter_options_panel .ultimeter-celebrations-teaser img {
+  float: left;
+  width: 250px;
+  margin: 10px 0px;
+}
+#configure-ultimeter .ultimeter_options_panel #ultimeter-goal-options-panel-teaser {
+  padding: 10px;
+  margin: 1em;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  color: #0073aa;
+}
+#configure-ultimeter .ultimeter_options_panel #ultimeter-goal-options-panel-teaser a {
+  text-decoration: none !important;
+}
+#configure-ultimeter .ultimeter_options_panel #ultimeter-goal-options-panel-teaser img {
+  max-height: 30px;
+  vertical-align: middle;
+  margin: 10px;
+}
+#configure-ultimeter .ultimeter_options_panel #ultimeter-goal-options-panel-teaser p {
+  margin-top: 0px;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  #configure-ultimeter .ultimeter_options_panel #ultimeter-goal-options-panel-teaser {
+    margin: 10px;
+  }
+}
+
+#configure-ultimeter .ultimeter_meter_type_panel .ultimeter-image-radio-fields ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#configure-ultimeter .ultimeter_meter_type_panel .ultimeter-image-radio-fields ul li {
+  display: flex;
+}
+._ultimeter_progressbar_type_field img {
+  width: 300px;
+}
+
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-section-header {
+  padding: 13px;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-section-header .ultimeter-enterprise-section-header__title {
+  margin: 0 16px 0 0;
+  padding: 3px 0;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 2.2;
+  font-weight: 600;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-section-header hr {
+  -ms-grid-row-align: center;
+  align-self: center;
+  flex-grow: 1;
+  height: 1px;
+  margin: 0 10px;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard {
+  margin-bottom: 24px;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-dashboard__columns {
+  display: grid;
+  grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+  grid-column-gap: 24px;
+}
+@media (max-width: 550px), only screen and (min-width: 851px) and (max-width: 1025px) {
+  .ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-dashboard__columns {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 0;
+  }
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card {
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 1, 0.4, 1);
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__header {
+  padding: 16px;
+  display: grid;
+  align-items: center;
+  border-top-left-radius: 3px;
+  border-top-left-radius: 4px;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body {
+  padding: 0px 16px 16px;
+  display: grid;
+  align-items: center;
+  border-top-left-radius: 3px;
+  border-top-left-radius: 4px;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body h4 {
+  margin: 0px;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body .ultimeter-status-green {
+  color: green;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body .ultimeter-status-red {
+  color: red;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body .ultimeter-enterprise-news, .ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body .ultimeter-enterprise-hints {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #DADFE2;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-card .ultimeter-enterprise-card__body .ultimeter-enterprise-news {
+  margin-top: 1em;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary {
+  background-color: #f0f0f0;
+  margin: 0;
+  display: grid;
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: #e0e0e0;
+  box-shadow: inset -1px -1px 0 #e0e0e0;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary.has-5-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary.has-2-items {
+  grid-template-columns: repeat(2, 1fr);
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary .ultimeter-enterprise-summary__item-container .ultimeter-enterprise-summary__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  line-height: 1.4em;
+  text-decoration: none;
+  color: #1e1e1e;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary .ultimeter-enterprise-summary__item-container .ultimeter-enterprise-summary__item .ultimeter-enterprise-summary__item-label {
+  display: block;
+  margin-bottom: 16px;
+  color: #757575;
+}
+.ultimeter-enterprise-dashboard-section .ultimeter-enterprise-dashboard .ultimeter-enterprise-summary .ultimeter-enterprise-summary__item-container .ultimeter-enterprise-summary__item .ultimeter-enterprise-summary__item-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+#upgrade-ultimeter .inside {
+  margin: 0;
+  padding: 0;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel {
+  display: flex;
+  flex-direction: column;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel#ultimeter-upgrade-panel-pro .ultimeter-upgrade-panel-header {
+  background-color: #EBC0FF;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel#ultimeter-upgrade-panel-enterprise .ultimeter-upgrade-panel-header {
+  background-color: #F5D62F;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel#ultimeter-upgrade-panel-enterprise .ultimeter-upgrade-panel-header h2 {
+  color: #000;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body h3 {
+  margin: 0.3em;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body .ultimeter-upgrade-panel-body-logos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 20px;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5em;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body p img {
+  height: 25px;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body p .ultimeter-upgrade-panel-small {
+  font-size: 0.8em;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body .button {
+  background-color: #000000;
+  border-radius: 50px;
+  height: 51px;
+  padding: 12px 24px;
+  color: #F5D62F;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 20px auto;
+}
+#upgrade-ultimeter #ultimeter-upgrade-panel .ultimeter-upgrade-panel .ultimeter-upgrade-panel-body .button:hover {
+  opacity: 75%;
+}
+
+.csf-field-select .chosen-container {
+  width: 50% !important;
+}
+
+.csf-field-group .csf-cloneable-header-icon {
+  vertical-align: unset;
+}
+
+.csf-field-group .csf-cloneable-wrapper {
+  margin-bottom: 20px;
+}
+
+.progressbar .csf--image {
+  width: 300px;
+}
+
+.csf-field-connected_image_select .csf--image-group, .csf-field-image_select_style_packs .csf--image-group {
+  display: flex;
+}
+.csf-field-connected_image_select .csf--image, .csf-field-image_select_style_packs .csf--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px 5px 0;
+  padding: 15px;
+}
+.csf-field-connected_image_select .csf--image.csf--free, .csf-field-image_select_style_packs .csf--image.csf--free {
+  opacity: 0.25;
+}
+.csf-field-connected_image_select .csf--image.csf--free figure, .csf-field-image_select_style_packs .csf--image.csf--free figure {
+  cursor: auto;
+}
+.csf-field-connected_image_select .csf--image figure, .csf-field-image_select_style_packs .csf--image figure {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  vertical-align: bottom;
+  border: 2px solid transparent;
+  background-color: #fff;
+  user-select: none;
+  transition: all 0.2s;
+}
+.csf-field-connected_image_select .csf--image figure:before, .csf-field-image_select_style_packs .csf--image figure:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 10px;
+  font-family: "Font Awesome 5 Pro", "Font Awesome 5 Free", "FontAwesome";
+  font-weight: 900;
+  content: "\f00c";
+  width: 16px;
+  height: 16px;
+  line-height: 14px;
+  opacity: 0;
+  color: #fff;
+  background-color: #222;
+  transition: opacity 0.2s;
+}
+.csf-field-connected_image_select .csf--image.csf--active figure, .csf-field-image_select_style_packs .csf--image.csf--active figure {
+  border-color: #222;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.csf-field-connected_image_select .csf--image.csf--active figure:before, .csf-field-image_select_style_packs .csf--image.csf--active figure:before {
+  opacity: 1;
+}
+.csf-field-connected_image_select .csf--image img, .csf-field-image_select_style_packs .csf--image img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.csf-field-connected_image_select .csf--image input, .csf-field-image_select_style_packs .csf--image input {
+  display: none;
+}
+
+.csf-field-connected_image_select .csf-connected-image-select-group-container {
+  display: flex;
+  flex-direction: column;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group {
+  position: relative;
+  margin: 2.5px 0;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group h4 {
+  font-size: 1em;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 15px;
+  min-height: 0;
+  font-size: 100%;
+  user-select: none;
+  border: 1px solid #ccd0d4;
+  background-color: #fafafa;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:active, .csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:hover, .csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title:focus {
+  outline: none;
+  border-color: #999;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title .csf--icon {
+  width: 20px;
+  text-align: center;
+  margin-right: 2px;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-title .csf-set-icon {
+  width: 16px;
+  text-align: center;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-content {
+  display: none;
+  padding: 0;
+  border: 1px solid #ccd0d4;
+  border-top: none;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-content.csf-connected-image-select-group-content-open {
+  display: flex;
+}
+.csf-field-connected_image_select .csf-connected-image-select-group-container .csf-connected-image-select-group .csf-connected-image-select-group-content .csf--sibling label {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.csf-metabox .csf-field.ultimeter-upsell-container {
+  padding: 0;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell {
+  color: #000;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell .ultimeter-upsell-left {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell .ultimeter-upsell-right {
+  width: 25%;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell img {
+  max-width: 100%;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell h2 {
+  text-align: center;
+  font-size: 22px !important;
+  padding: 8px 12px !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  font-weight: 500 !important;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell p {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+.csf-metabox .csf-field.ultimeter-upsell-container .ultimeter-upsell .ultimeter-upsell-button {
+  background-color: #000000;
+  border-radius: 50px;
+  height: 51px;
+  padding: 12px 24px;
+  color: #F5D62F;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.csf-field.plugin-teaser ul {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+/*# sourceMappingURL=ultimeter-admin.css.map */

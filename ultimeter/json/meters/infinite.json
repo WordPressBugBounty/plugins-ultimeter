@@ -1,0 +1,10 @@
+{
+  "id":"infinite",
+  "name":"Infinite",
+  "set":"goalless",
+  "order":0,
+  "physics":"text",
+  "premium":true,
+  "image":"inf-flip.png",
+  "goalless":true
+}

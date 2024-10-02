@@ -1,0 +1,9 @@
+{
+  "id":"basictrack",
+  "name":"Scientific",
+  "set":"thermometers",
+  "order":3,
+  "physics":"height",
+  "premium":true,
+  "image":"basictrack.jpg"
+}

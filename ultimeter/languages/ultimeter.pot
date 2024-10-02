@@ -1,0 +1,1178 @@
+# Copyright (C) 2024 Bouncingsprout Studio
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimeter - the Ultimate Progress and Goals Meter 3.0.4\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimeter\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-03-20T12:01:10+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: ultimeter\n"
+
+#. Plugin Name of the plugin
+msgid "Ultimeter - the Ultimate Progress and Goals Meter"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://ultimeter.app"
+msgstr ""
+
+#. Description of the plugin
+msgid "The most advanced progress and goals meter for WordPress"
+msgstr ""
+
+#. Author of the plugin
+msgid "Bouncingsprout Studio"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:174
+msgctxt "Post Type General Name"
+msgid "Ultimeters"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:175
+msgctxt "Post Type Singular Name"
+msgid "Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:176
+#: admin/class-ultimeter-admin.php:177
+#: admin/class-ultimeter-admin.php:203
+#: gutenberg/assets/js/ultimeter-gutenberg-block.js:35
+#: gutenberg/assets/js/ultimeter-gutenberg-block.js:73
+msgid "Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:178
+msgid "Item Archives"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:179
+msgid "Item Attributes"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:180
+msgid "Parent Item:"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:181
+msgid "All Ultimeters"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:182
+#: admin/class-ultimeter-admin.php:183
+msgid "Add New Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:184
+msgid "New Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:185
+msgid "Edit Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:186
+msgid "Update Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:187
+msgid "View Item"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:188
+msgid "View Items"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:189
+msgid "Search Item"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:190
+msgid "No Ultimeters found"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:191
+msgid "No Ultimeters found in Trash"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:192
+msgid "Featured Image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:193
+msgid "Set featured image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:194
+msgid "Remove featured image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:195
+msgid "Use as featured image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:196
+msgid "Insert into item"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:197
+msgid "Uploaded to this item"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:198
+msgid "Items list"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:199
+msgid "Items list navigation"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:200
+msgid "Filter items list"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:204
+msgid "Post Type Description"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:237
+#: admin/class-ultimeter-admin.php:238
+#: admin/partials/ultimeter-upgrade-metabox.php:36
+msgid "Enterprise Edition"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:287
+msgid "Ultimeter Enterprise Edition"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:439
+msgid "Need More?"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:471
+msgid "Debug Mode"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:487
+msgid "Switch on debug mode"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:488
+msgid "Debug mode displays the configuration of your Ultimeter on the frontend, and it's events in the browser console."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:493
+msgid "Debug Quietly"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:494
+msgid "Quiet mode prevents the debug information being displayed, useful if your Ultimeter is visible to the public."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:499
+msgid "Debug Information"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:522
+msgid "Block Theme Detected"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:526
+msgid "No debug information to show here"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:548
+msgid "Configure your Ultimeter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:561
+msgid "Meter Type"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:578
+msgid "Goal Options"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:588
+msgid "Visual Options"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:598
+#: admin/partials/ultimeter-upgrade-metabox.php:23
+msgid "Milestones"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:608
+#: admin/partials/ultimeter-upgrade-metabox.php:25
+msgid "Celebrations"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:618
+msgid "Custom Meter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:636
+msgid "Style Pack"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:647
+#: admin/class-ultimeter-admin.php:697
+msgid "Meter Primary Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:648
+#: admin/class-ultimeter-admin.php:698
+msgid "The main color for your meter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:659
+#: admin/class-ultimeter-admin.php:705
+msgid "Meter Secondary Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:660
+#: admin/class-ultimeter-admin.php:706
+msgid "The outer, or background color."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:671
+#: admin/class-ultimeter-admin.php:712
+msgid "Meter Raised Amount Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:672
+#: admin/class-ultimeter-admin.php:713
+msgid "The color for the label or identifier of the amount raised."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:684
+#: admin/class-ultimeter-admin.php:719
+msgid "Meter Total Amount Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:685
+#: admin/class-ultimeter-admin.php:720
+msgid "The color for the label or identifier of the total amount."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:729
+msgid "Select a Meter Size"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:730
+msgid "Select a size for your Ultimeter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:742
+msgid "Horizontal Alignment"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:743
+msgid "Align the Ultimeter within it's container."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:757
+msgid "Meter Milestones Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:758
+msgid "The color for the meter's displayed milestones."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:770
+msgid "Radial Meter Label"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:771
+msgid "Enter a label to use inside the radial meter. This could be 'reached', 'achieved', or just left blank."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:780
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:781
+msgid "Enter any custom CSS you require, or have been asked to copy and paste."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:794
+msgid "Enter the singular word for the custom unit. For example, if you are organising a food drive, you could use 'box' or 'crate'. Or, if you are running a petition, you could use 'signature'."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:795
+msgid "Singular Form"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:804
+msgid "Enter the plural word for the custom unit. For example, if you are organising a food drive, you could use 'boxes' or 'crates'. Or, if you are running a petition, you could use 'signatures'."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:805
+msgid "Plural Form"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:814
+msgid "Before Current Label"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:815
+msgid "Text to add before the raised amount label."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:824
+msgid "After Current Amount Label"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:825
+msgid "Text to add after the raised amount label."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:834
+msgid "Before Total Raised Label"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:835
+msgid "Text to add before the total amount label."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:845
+msgid "After Total Raised Label"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:846
+msgid "Text to add after the total amount label."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:861
+msgid "Progressbar Type"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:862
+msgid "Choose the type of Progress Bar you require. For a complete description of what each can do for you, please see the documentation."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:869
+msgid "Icon Progressbar Image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:874
+msgid "Choose an image to use as the progressbar icon."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:882
+msgid "Icon Progressbar Icon"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:883
+msgid "Choose an icon to use as the progressbar icon. Ensure no image is present above."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:891
+msgid "Display Trailing Line"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:892
+msgid "Choose to display a trailing line for an Icon-based Progress Bar."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:903
+msgid "Meter Speed"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:904
+msgid "This is how long it takes the meter to reach the required value. The higher the number, the longer it takes. Experiment with different values to get the right speed."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:916
+msgid "Goalless Meter Type"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:917
+msgid "Choose the type of Goalless Meter you require. For a complete description of what each can do for you, please see the documentation."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:925
+msgid "Progress Amount Size"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:926
+msgid "Choose how big the progress amount should be, in pixels."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:934
+msgid "Hide the Goal"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:935
+msgid "You can decide not to show the goal under the meter. If you wish to show a goal, ensure you have provided a goal value in Goal Options."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:943
+msgid "Separator"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:944
+msgid "A label to separate the progress from the goal. Defaults to 'of'."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:956
+msgid "Separator Size"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:957
+msgid "Choose how big the separator should be, in pixels."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:969
+msgid "Goal Amount Size"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:970
+msgid "Choose how big the goal amount should be, in pixels."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:990
+msgid "Number Format"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:991
+msgid "Choose an appropriate number format for your language."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1005
+msgid "Currency Symbol Placement"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1006
+msgid "Choose where your currency symbol should go. Remember to set your currency in the Goal Options tab."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1015
+#: admin/class-ultimeter-admin.php:1699
+msgid "Yes"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1016
+#: admin/class-ultimeter-admin.php:1700
+msgid "No"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1019
+#: admin/partials/ultimeter-upgrade-metabox.php:46
+msgid "Real-time Updating"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1020
+msgid "Update this meter without page refreshing."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1034
+msgid "Display Goal"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1035
+msgid "Choose to display the goal at the end of your Progress Bar."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1046
+#: admin/class-ultimeter-admin.php:1318
+#: admin/class-ultimeter-admin.php:1381
+#: admin/class-ultimeter-admin.php:1484
+msgid "Amount Raised"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1047
+#: admin/class-ultimeter-admin.php:1319
+#: admin/class-ultimeter-admin.php:1382
+#: admin/class-ultimeter-admin.php:1485
+msgid "Percentage Raised"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1048
+msgid "Custom Units"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1052
+msgid "GiveWP"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1056
+msgid "Charitable"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1060
+msgid "Gravity Forms"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1064
+msgid "Fluent Forms"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1070
+#: admin/class-ultimeter-admin.php:1482
+msgid "Goal Format"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1077
+#: admin/class-ultimeter-admin.php:1492
+msgid "Select a language. The language you choose controls how decimals are displayed in currencies, as well as where any percentage sign is placed."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1079
+#: admin/class-ultimeter-admin.php:1494
+msgid "Language"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1086
+#: admin/class-ultimeter-admin.php:1501
+msgid "Select a Currency. The associated symbol or currency code will be used in the Ultimeter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1088
+#: admin/class-ultimeter-admin.php:1503
+msgid "Currency"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1095
+#: admin/class-ultimeter-admin.php:1510
+msgid "Enter the goal amount. This is the total amount you hope to raise."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1096
+#: admin/class-ultimeter-admin.php:1121
+#: admin/class-ultimeter-admin.php:1199
+#: admin/class-ultimeter-admin.php:1213
+#: admin/class-ultimeter-admin.php:1276
+#: admin/class-ultimeter-admin.php:1332
+#: admin/class-ultimeter-admin.php:1396
+#: admin/class-ultimeter-admin.php:1511
+msgid "Goal Amount"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1103
+#: admin/class-ultimeter-admin.php:1518
+msgid "Enter the raised amount. This is the amount of money you have raised so far."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1104
+#: admin/class-ultimeter-admin.php:1113
+#: admin/class-ultimeter-admin.php:1129
+#: admin/class-ultimeter-admin.php:1519
+#: admin/class-ultimeter-admin.php:1528
+#: admin/class-ultimeter-admin.php:1662
+msgid "Raised Amount"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1111
+#: admin/class-ultimeter-admin.php:1526
+msgid "Enter the percentage raised so far. The goal amount will always be 100%."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1120
+msgid "Enter the goal amount."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1128
+msgid "Enter the raised amount. This is the quantity of the custom unit(s) you have raised so far."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1136
+#: admin/class-ultimeter-admin.php:1145
+#: admin/class-ultimeter-admin.php:1153
+msgid "Enter an amount to boost your progress."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1137
+#: admin/class-ultimeter-admin.php:1146
+#: admin/class-ultimeter-admin.php:1154
+#: admin/class-ultimeter-admin.php:1227
+#: admin/class-ultimeter-admin.php:1241
+#: admin/class-ultimeter-admin.php:1287
+#: admin/class-ultimeter-admin.php:1438
+msgid "Boost Amount"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1167
+msgid "Choose which Gravity Form(s) you want to track on your Ultimeter. Defaults to ALL forms."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1171
+msgid "Select a Gravity Form"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1180
+msgid "Do you want to display the total payments for the form(s) or the total number of entries?"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1184
+#: admin/class-ultimeter-admin.php:1379
+msgid "Choose a Metric"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1186
+msgid "Total Payments"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1187
+msgid "Total Entries"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1195
+#: admin/class-ultimeter-admin.php:1328
+#: admin/class-ultimeter-admin.php:1392
+msgid "This is the monetary goal amount you want to reach."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1209
+#: admin/class-ultimeter-admin.php:1272
+msgid "Set the total number of entries as a goal."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1223
+msgid "Add an amount to boost your total payments by."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1237
+#: admin/class-ultimeter-admin.php:1283
+msgid "Add an amount to boost your entries figure by."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1260
+msgid "Choose which Fluent Form(s) you want to track on your Ultimeter. Defaults to ALL forms."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1264
+msgid "Select a Fluent Form"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1297
+msgid "Select a campaign"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1299
+msgid "Choose which Charitable campaign you want to track on your Ultimeter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1303
+msgid "Charitable Campaign"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1312
+msgid "Do you want to display the total amount raised based on your monetary goal or a percentage? For instance, \"$500 of $1,000 raised\" or \"50% funded\" or \"1 of 5 donations\"."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1316
+msgid "Campaign Data Format"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1320
+#: admin/class-ultimeter-admin.php:1383
+msgid "Number of Donations"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1342
+#: admin/class-ultimeter-admin.php:1406
+msgid "Set the total number of donations as a goal."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1346
+#: admin/class-ultimeter-admin.php:1410
+msgid "Donation Goal"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1362
+msgid "Choose which GiveWP form you want to track on your Ultimeter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1366
+msgid "Select a GiveWP Form"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1375
+msgid "Do you want to display the total amount raised based on your monetary goal or a percentage? For instance, \"$500 of $1,000 raised\" or \"50% funded\" or \"1 of 5 donations\". You can also display a donor-based goal, such as \"100 of 1,000 donors have given\"."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1384
+msgid "Number of Donors"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1420
+msgid "Set the total number of donors as a goal."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1424
+msgid "Donor Goal"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1434
+msgid "Boost your raised amount, percentage, donations or donors by the quantity you enter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1464
+msgid "Hey there! It looks like you have plugins installed that are integrated into Ultimeter's Premium Edition, for example:"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1466
+msgid "If you are using any of these with Ultimeter, and are manually inputting data, take a look at our "
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1467
+msgid "integrations"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1468
+msgid " to see how much time you could save."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1543
+msgid "Add Milestone"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1549
+msgid "Text"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1550
+msgid "Enter the text to display for the milestone. We suggest you keep it as concise as possible."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1555
+msgid "Percentage"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1556
+msgid "Enter the percentage at which the milestone will be set."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1579
+msgid "Enable Celebration"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1580
+msgid "Show off your success by adding a celebratory animation when you reach your target."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1588
+msgid "Duration of Celebration"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1589
+msgid "Time in seconds you want the effect to last for. Defaults to 7 seconds."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1601
+msgid "Confetti Piece size"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1602
+msgid "Choose how big the pieces of confetti will be."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1610
+msgid "Discrete"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1611
+msgid "Average"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1612
+msgid "Lots"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1613
+msgid "Crazy"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1615
+msgid "Confetti Amount"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1616
+msgid "Choose how much confetti to show."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1638
+msgid "Base Image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1643
+msgid "Upload your lower image. This image will be totally visible at 0%."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1649
+msgid "Overlay Image"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1654
+msgid "Upload your upper image. This image will become proportionally more visible as the amount raised increases."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1663
+msgid "Custom meters can now track any metric in the goal options tab, and we recommend you choose one of those. If you have previously used this box to enter a percentage, simply delete the entry to use the new goal options."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1670
+msgid "Bottom to Top"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1671
+msgid "Top to Bottom"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1672
+msgid "Left to Right"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1673
+msgid "Right to Left"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1675
+msgid "Direction"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1676
+msgid "Choose which way your custom meter should fill. For a thermometer effect, use Bottom to Top. For a progress bar effect, use Left to Right."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1683
+msgid "Top Offset"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1684
+msgid "Enter an offset in pixels. The meter will ignore this upper part of the image. See docs for more explanation."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1691
+msgid "Bottom Offset"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1692
+msgid "Enter an offset in pixels. The meter will ignore this lower part of the image. See docs for more explanation."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1703
+msgid "Display Counter"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1704
+msgid "Show an animated counter below the custom meter."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1710
+msgid "Disregard Margins and Padding"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1711
+msgid "Try this if your custom meter is not lining up correctly."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1717
+msgid "Background Color"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1718
+msgid "If you are placing a custom meter over a colored background, enter the exact same color here. This will prevent an unwanted white background behind th eoverlay image. You cannot place a custom meter over an image background for technical reasons."
+msgstr ""
+
+#. translators: %s: Link to 5 star rating
+#: admin/class-ultimeter-admin.php:1836
+msgid "If you like <strong>Ultimeter</strong> please leave us a %s rating. It takes a minute and helps a lot. Thanks in advance!"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1840
+msgid "Thanks :)"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:1889
+msgid "Copy Shortcode"
+msgstr ""
+
+#. translators: %s: ID of this Ultimeter
+#: admin/class-ultimeter-admin.php:1910
+msgid "<div class=\"misc-pub-section ultimeter-ID\"><span> Ultimeter ID: <strong>%s</strong></span></div>"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2003
+msgid "Duplicate"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2021
+#: admin/class-ultimeter-admin.php:2024
+msgid "Ultimeter updated."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2022
+msgid "Custom field updated."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2023
+msgid "Custom field deleted."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2027
+msgid "Ultimeter restored to revision from %s"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2030
+msgid "Ultimeter published."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2031
+msgid "Ultimeter saved."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2032
+msgid "Ultimeter submitted."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2034
+msgid "Ultimeter scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#. translators: Publish box date format, see http://php.net/date
+#: admin/class-ultimeter-admin.php:2036
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2038
+msgid "Ultimeter draft updated."
+msgstr ""
+
+#: admin/class-ultimeter-admin.php:2043
+msgid " To use your new Ultimeter, insert the following shortcode into a page: [ultimeter id=\"%s\"], use the 'Copy Shortcode' button below, add an Ultimeter Widget, or use the all new Ultimeter Block. The choice is yours."
+msgstr ""
+
+#: admin/partials/blank-slate.php:11
+msgid "Ultimeter Logo"
+msgstr ""
+
+#: admin/partials/blank-slate.php:12
+msgid "No Ultimeters found."
+msgstr ""
+
+#: admin/partials/blank-slate.php:13
+msgid "The first step towards displaying your progress is to create an Ultimeter."
+msgstr ""
+
+#: admin/partials/blank-slate.php:14
+msgid "Create Ultimeter"
+msgstr ""
+
+#: admin/partials/blank-slate.php:15
+msgid "Need help? Get started at our "
+msgstr ""
+
+#: admin/partials/blank-slate.php:15
+msgid "support page"
+msgstr ""
+
+#: admin/partials/enterprise.php:44
+msgid "Refresh Interval (seconds)"
+msgstr ""
+
+#: admin/partials/enterprise.php:49
+msgid "Save"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:6
+msgid "Professional Edition"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:9
+#: admin/partials/ultimeter-upgrade-metabox.php:39
+msgid "Integrates with:"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:22
+msgid "Lots More Meters"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:24
+msgid "Use your Own Logo or Design"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:26
+msgid "More Styling Options"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:45
+msgid "WordPress REST API"
+msgstr ""
+
+#: admin/partials/ultimeter-upgrade-metabox.php:47
+msgid "No page refreshes required. Leave your meter on a screen and it will update by itself."
+msgstr ""
+
+#: includes/class-ultimeter-rest-controller.php:698
+msgid "Unique identifier for this Ultimeter."
+msgstr ""
+
+#: includes/class-ultimeter-rest-controller.php:704
+msgid "The title for this Ultimeter."
+msgstr ""
+
+#: includes/class-ultimeter-rest-controller.php:708
+msgid "The date this Ultimeter was published."
+msgstr ""
+
+#: includes/class-ultimeter-rest-controller.php:712
+msgid "The author who created this Ultimeter."
+msgstr ""
+
+#: includes/class-ultimeter-ultimeter.php:789
+msgid "No base image found. Please check your configuration."
+msgstr ""
+
+#: includes/class-ultimeter-ultimeter.php:797
+msgid "No overlay image found. Please check your configuration."
+msgstr ""
+
+#: includes/class-ultimeter-ultimeter.php:995
+#: includes/class-ultimeter-ultimeter.php:1003
+#: includes/class-ultimeter-ultimeter.php:1014
+msgid "Invalid Ultimeter. Please check your configuration. Please check this Ultimeter's edit screen for error messages."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:41
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:43
+msgid "WooCommerce"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:55
+msgid "Select Product"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:57
+msgid "Choose a product from the dropdown list."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:61
+msgid "Product"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:73
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:141
+msgid "Enter your WooCommerce sales goal."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:74
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:142
+msgid "Sales Goal"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:91
+msgid "Choose the type of data you want the Ultimeter to track."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:95
+msgid "Select a Report Type"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:97
+msgid "Total sales by date"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:98
+msgid "Total sales by date (net)"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:99
+msgid "Sales by product"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:100
+msgid "Sales by product (less tax)"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:101
+msgid "Units by date"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:102
+msgid "Units by product"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:111
+msgid "Choose a time-range to see data for."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:115
+msgid "Time Range"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:117
+msgid "All time"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:118
+msgid "This Year"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:119
+msgid "Last month"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:120
+msgid "This month"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:121
+msgid "Last 7 days"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:122
+msgid "Custom"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:131
+msgid "Custom Date Range"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:151
+msgid "Select Products"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:152
+msgid "Choose a product or products from the dropdown list."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:156
+msgid "Products"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:168
+msgid "Enter the name to display for your product. This could be the product name, or a simpler form, such as box or crate."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:172
+msgid "Product Description"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:179
+msgid "Allows you to show that you give a percentage of profits to charity. For example, for ten percent of sales of a product, enter '10'. If you are match-funding your sales, enter '200' into the box, so the Ultimeter displays twice the value."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:183
+msgid "Percentage Modifier"
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:190
+msgid "Boost your WooCommerce amount by the figure here. So to boost your total sales by $1000, just enter 1000."
+msgstr ""
+
+#: integrations/woocommerce/includes/class-ultimeter-woocommerce.php:194
+msgid "Boost"
+msgstr ""
+
+#: gutenberg/assets/js/ultimeter-gutenberg-block.js:56
+msgid "Select an Ultimeter"
+msgstr ""

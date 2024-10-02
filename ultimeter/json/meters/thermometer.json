@@ -1,0 +1,9 @@
+{
+  "id":"thermometer",
+  "name":"Thermometer",
+  "set":"thermometers",
+  "order":0,
+  "physics":"height",
+  "premium":false,
+  "image":"sp-ultimeter-thermometer.jpg"
+}

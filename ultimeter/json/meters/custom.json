@@ -1,0 +1,9 @@
+{
+  "id":"custom",
+  "name":"Custom Meter",
+  "set":"custom",
+  "order":0,
+  "physics":"custom_meter",
+  "premium":true,
+  "image":"custom.jpg"
+}

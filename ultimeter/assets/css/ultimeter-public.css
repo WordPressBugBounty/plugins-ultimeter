@@ -1,6 +1,7 @@
 /** Start 2023 Rebuild ************************************************************************************************/
 .ultimeter-container {
   display: flex;
+  width: 100%;
 }
 .ultimeter-container .ultimeter-confetti {
   position: absolute;

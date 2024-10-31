@@ -5,7 +5,7 @@
  * Plugin Name:       Ultimeter - the Ultimate Progress and Goals Meter
  * Plugin URI:        https://ultimeter.app
  * Description:       The most advanced progress and goals meter for WordPress
- * Version:           3.0.4
+ * Version:           3.0.5
  * Author:            Bouncingsprout Studio
  * Author URI:        https://ultimeter.app
  * License:           GPL-2.0+
@@ -13,27 +13,23 @@
  * Text Domain:       ultimeter
  * Domain Path:       /languages
  * WC requires at least: 3.0.0
- * WC tested up to:   8.7
+ * WC tested up to:   9.3
  *
  */
 // If this file is called directly, abort.
 if ( !defined( 'WPINC' ) ) {
     die;
 }
-
 if ( function_exists( 'upgm_fs' ) ) {
     upgm_fs()->set_basename( false, __FILE__ );
 } else {
     // DO NOT REMOVE THIS IF, IT IS ESSENTIAL FOR THE `function_exists` CALL ABOVE TO PROPERLY WORK.
-    
     if ( !function_exists( 'upgm_fs' ) ) {
         /**
          * Create a helper function for easy SDK access.
          */
-        function upgm_fs()
-        {
-            global  $upgm_fs ;
-            
+        function upgm_fs() {
+            global $upgm_fs;
             if ( !isset( $upgm_fs ) ) {
                 // Activate multisite network integration.
                 if ( !defined( 'WP_FS__PRODUCT_1825_MULTISITE' ) ) {
@@ -50,24 +46,22 @@ if ( function_exists( 'upgm_fs' ) ) {
                     'has_addons'     => false,
                     'has_paid_plans' => true,
                     'menu'           => array(
-                    'slug'    => 'edit.php?post_type=ultimeter',
-                    'support' => false,
-                ),
+                        'slug'    => 'edit.php?post_type=ultimeter',
+                        'support' => false,
+                    ),
                     'is_live'        => true,
                 ) );
             }
-            
             return $upgm_fs;
         }
-        
+
         // Init Freemius.
         upgm_fs();
         // Signal that SDK was initiated.
         do_action( 'upgm_fs_loaded' );
     }
-    
     // Current version.
-    define( 'ULTIMETER_VERSION', '3.0.4' );
+    define( 'ULTIMETER_VERSION', '3.0.5' );
     define( 'ULTIMETER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
     define( 'ULTIMETER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
     // Define a constant to hold our support page.
@@ -79,12 +73,11 @@ if ( function_exists( 'upgm_fs' ) ) {
      *
      * @since 2.2
      */
-    function ultimeter_blank_slate()
-    {
+    function ultimeter_blank_slate() {
         $blank_slate = new Ultimeter_Blank_Slate();
         $blank_slate->init();
     }
-    
+
     add_action( 'current_screen', 'ultimeter_blank_slate' );
     /**
      * Prevent users from viewing directly from the posts table, as it doesn't make sense.
@@ -94,14 +87,13 @@ if ( function_exists( 'upgm_fs' ) ) {
      *
      * @return array
      */
-    function ultimeter_post_row_actions( $actions, $post )
-    {
+    function ultimeter_post_row_actions(  $actions, $post  ) {
         if ( 'ultimeter' === $post->post_type ) {
-            unset( $actions['view'] );
+            unset($actions['view']);
         }
         return $actions;
     }
-    
+
     add_filter(
         'post_row_actions',
         'ultimeter_post_row_actions',
@@ -111,11 +103,10 @@ if ( function_exists( 'upgm_fs' ) ) {
     /**
      * Flush rewrite rules on activation.
      */
-    function activate_ultimeter()
-    {
+    function activate_ultimeter() {
         flush_rewrite_rules();
     }
-    
+
     register_activation_hook( __FILE__, 'activate_ultimeter' );
     /**
      * The core plugin class that is used to define internationalization,
@@ -131,10 +122,9 @@ if ( function_exists( 'upgm_fs' ) ) {
      *
      * @since    1.0.0
      */
-    function run_ultimeter()
-    {
+    function run_ultimeter() {
         $ultimeter = new Ultimeter();
     }
-    
+
     run_ultimeter();
 }

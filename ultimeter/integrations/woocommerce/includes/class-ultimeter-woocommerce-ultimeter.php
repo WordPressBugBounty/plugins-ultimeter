@@ -9,38 +9,34 @@ if ( !defined( 'WPINC' ) ) {
 /**
  * Class that extends our meter class, for WooCommerce specific functionality.
  */
-class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
-{
+class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
     /**
      * Required files and hooks.
      *
      * @return void
      */
-    public function init()
-    {
+    public function init() {
         if ( class_exists( 'woocommerce' ) ) {
             // Include the main WooCommerce report class.
             include_once WC()->plugin_path() . '/includes/admin/reports/class-wc-admin-report.php';
         }
     }
-    
+
     /**
      * Get the product(s) associated with this Ultimeter.
      *
      * @return string
      */
-    public function get_products()
-    {
+    public function get_products() {
         return get_post_meta( $this->id, '_ultimeter_woocommerce', true );
     }
-    
+
     /**
      * Get the current (raised) value for this Ultimeter.
      *
      * @return int
      */
-    public function get_current()
-    {
+    public function get_current() {
         // Set a default.
         $default = apply_filters( 'ultimeter_default_current', 0 );
         $current = $this->get_sales_by_product( $this->get_products() );
@@ -53,14 +49,13 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
         $this->current = $current;
         return $current;
     }
-    
+
     /**
      * Get the total for this Ultimeter.
      *
      * @return int
      */
-    public function get_total()
-    {
+    public function get_total() {
         // Set a default.
         $default = apply_filters( 'ultimeter_default_total', 100 );
         $total = get_post_meta( $this->id, '_ultimeter_woo_goal', true );
@@ -73,7 +68,7 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
         $this->total = $total;
         return $total;
     }
-    
+
     /**
      * Get WooCommerce sales data.
      *
@@ -81,9 +76,8 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
      *
      * @return array
      */
-    public function get_sales_by_product( $product )
-    {
-        if ( empty($product) || !class_exists( 'woocommerce' ) ) {
+    public function get_sales_by_product( $product ) {
+        if ( empty( $product ) || !class_exists( 'woocommerce' ) ) {
             return 0;
         }
         // Create a new WC_Admin_Report object
@@ -99,46 +93,42 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
         // Based on woocoommerce/includes/admin/reports/class-wc-report-sales-by-product.php.
         $gross = $wc_report->get_order_report_data( array(
             'data'       => array(
-            '_line_subtotal' => array(
-            'type'            => 'order_item_meta',
-            'order_item_type' => 'line_item',
-            'function'        => 'SUM',
-            'name'            => 'gross',
-        ),
-        ),
+                '_line_subtotal' => array(
+                    'type'            => 'order_item_meta',
+                    'order_item_type' => 'line_item',
+                    'function'        => 'SUM',
+                    'name'            => 'gross',
+                ),
+            ),
             'query_type' => 'get_var',
             'where_meta' => $where_meta,
         ) );
-        
         if ( $gross > 0 ) {
             return $gross;
         } else {
             return 0;
         }
-    
     }
-    
+
     /**
      * The output type controls how the values are rendered on the front end. It should always be one of 3 types:
      * ultimeter_currency, ultimeter_percentage, or ultimeter_custom.
      *
      * @return string
      */
-    public function get_output_type()
-    {
+    public function get_output_type() {
         $output_type = 'ultimeter_currency';
         return $output_type;
     }
-    
+
     /**
      * Get the current range and calculate the start and end dates.
      *
      * @return array|false
      */
-    public function calculate_current_range()
-    {
+    public function calculate_current_range() {
         $current_range = get_post_meta( $this->id, '_ultimeter_ultwoo_time', true );
-        if ( empty($current_range) || 'all_time' === $current_range ) {
+        if ( empty( $current_range ) || 'all_time' === $current_range ) {
             return false;
         }
         switch ( $current_range ) {
@@ -146,31 +136,25 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter
                 $from_to = get_post_meta( $this->id, '_ultimeter_ultwoo_time_custom_range', true );
                 $start = sanitize_text_field( get_post_meta( $this->id, '_ultimeter_ultwoo_time_start_date', true ) );
                 $end = sanitize_text_field( get_post_meta( $this->id, '_ultimeter_ultwoo_time_end_date', true ) );
-                
                 if ( isset( $from_to ) ) {
                     $start = $from_to['from'];
                     $end = $from_to['to'];
                     $start_date = strtotime( $start );
-                    
-                    if ( empty($end) ) {
+                    if ( empty( $end ) ) {
                         $end_date = strtotime( 'midnight' );
                     } else {
                         $end_date = strtotime( 'midnight', strtotime( $end ) );
                     }
-                
                 } elseif ( isset( $start ) && isset( $end ) ) {
                     $start_date = strtotime( $start );
-                    
-                    if ( empty($end) ) {
+                    if ( empty( $end ) ) {
                         $end_date = strtotime( 'midnight' );
                     } else {
                         $end_date = strtotime( 'midnight', strtotime( $end ) );
                     }
-                
                 } else {
                     return false;
                 }
-                
                 break;
             case 'year':
                 $start_date = strtotime( gmdate( 'Y-01-01' ) );

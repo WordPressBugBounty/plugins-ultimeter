@@ -2,9 +2,9 @@
 Contributors: bouncingsprout
 Tags: progress bar, meter, fundraising, progress, goal
 Requires at least: 3.0.1
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,16 @@ If you need more, users of our free version can get help over at our [support fo
 
 == Changelog ==
 
+= 3.0.5 =
+* Fix bug where percentages over 100 would traverse further than emd of meter
+* Change how meters pull styling data
+* Add support for Magnific Popups
+* Fix bug preventing meters from being dynamically loaded
+* Add 100% width to the Ultimeter to fix a container collapse issue
+* WP compatibility
+* WC Compatibility
+* Freemius version
+
 = 3.0.4 =
 * Fix bug where you couldn't add a boost to Gravity Forms entry counts
 * Add Fluent Forms integration
@@ -187,10 +197,8 @@ If you need more, users of our free version can get help over at our [support fo
 * New contact information
 * New meter background color
 
-
 = 2.6.0 =
 * Improve international number formatting
-
 
 = 2.5.1 =
 * Bump to WordPress 5.6
@@ -212,14 +220,12 @@ If you need more, users of our free version can get help over at our [support fo
 * Bump to WordPress 5.5
 * Minor bug fixes
 
-
 = 2.3.1 =
 * Fix bug where users could duplicate any post, not just Ultimeters
 
 = 2.3.0 =
 * Improve display of meter amounts, so they no longer break into two lines
 * Fix Bulgarian currency code
-
 
 = 2.2.8 =
 * Update contact information
@@ -229,7 +235,6 @@ If you need more, users of our free version can get help over at our [support fo
 
 = 2.2.7 =
 * Improve number formatting to prevent loss of trailing zeros in float numbers
-
 * Testing to latest WooCommerce version
 
 = 2.2.6 =
@@ -247,7 +252,6 @@ If you need more, users of our free version can get help over at our [support fo
 * Update to Freemius library
 * Allow for duplication of Ultimeters
 * Testing to latest WP version
-
 
 
 = 2.2.3 =

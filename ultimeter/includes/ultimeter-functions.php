@@ -11,9 +11,8 @@ if ( !defined( 'WPINC' ) ) {
  *
  * @return mixed|void
  */
-function ultimeter_get_meter_paths()
-{
-    $paths = array( plugin_dir_path( __DIR__ ) . 'json/meters' );
+function ultimeter_get_meter_paths() {
+    $paths = array(plugin_dir_path( __DIR__ ) . 'json/meters');
     return apply_filters( 'ultimeter_get_meter_paths', $paths );
 }
 
@@ -24,8 +23,7 @@ function ultimeter_get_meter_paths()
  *
  * @return mixed
  */
-function ultimeter_get_format( $id )
-{
+function ultimeter_get_format(  $id  ) {
     return get_post_meta( $id, '_ultimeter_goal_format', true );
 }
 
@@ -34,9 +32,8 @@ function ultimeter_get_format( $id )
  *
  * @return mixed|void
  */
-function ultimeter_get_style_pack_paths()
-{
-    $paths = array( plugin_dir_path( __DIR__ ) . 'json/style-packs' );
+function ultimeter_get_style_pack_paths() {
+    $paths = array(plugin_dir_path( __DIR__ ) . 'json/style-packs');
     return apply_filters( 'ultimeter_get_style_pack_paths', $paths );
 }
 
@@ -47,8 +44,7 @@ function ultimeter_get_style_pack_paths()
  *
  * @return mixed|null
  */
-function ultimeter_get_languages()
-{
+function ultimeter_get_languages() {
     $file = plugin_dir_path( __DIR__ ) . 'json/languages.json';
     return json_decode( file_get_contents( $file ), true );
 }
@@ -60,8 +56,7 @@ function ultimeter_get_languages()
  *
  * @return array|bool|null
  */
-function ultimeter_get_currencies()
-{
+function ultimeter_get_currencies() {
     $file = plugin_dir_path( __DIR__ ) . 'json/currencies.json';
     $currencies = json_decode( file_get_contents( $file ), true );
     return array_combine( array_keys( $currencies ), array_column( $currencies, 'name' ) );

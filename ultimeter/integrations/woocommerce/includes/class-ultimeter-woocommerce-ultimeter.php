@@ -1,13 +1,13 @@
 <?php
 
 /**
- * A WooCommerce based Ultimeter.
+ * A WooCommerce based Ultimeter with HPOS compatibility.
  */
 if ( !defined( 'WPINC' ) ) {
     die;
 }
 /**
- * Class that extends our meter class, for WooCommerce specific functionality.
+ * Class that extends our meter class, for WooCommerce-specific functionality.
  */
 class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
     /**
@@ -16,10 +16,6 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
      * @return void
      */
     public function init() {
-        if ( class_exists( 'woocommerce' ) ) {
-            // Include the main WooCommerce report class.
-            include_once WC()->plugin_path() . '/includes/admin/reports/class-wc-admin-report.php';
-        }
     }
 
     /**
@@ -36,17 +32,25 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
      *
      * @return int
      */
+    /**
+     * Get the current (raised) value for this Ultimeter.
+     *
+     * @return int
+     */
     public function get_current() {
         // Set a default.
         $default = apply_filters( 'ultimeter_default_current', 0 );
         $current = $this->get_sales_by_product( $this->get_products() );
-        // Fallback to the default.
-        if ( !$current ) {
-            $current = $default;
-        }
-        // Clean any unwanted commas.
-        $current = (int) str_replace( ',', '', $current );
-        $this->current = $current;
+        return ( $current ?: $default );
+    }
+
+    /**
+     * Apply boost and percentage modifiers.
+     *
+     * @param float|int $current The current value.
+     * @return float|int
+     */
+    private function apply_modifiers( $current ) {
         return $current;
     }
 
@@ -56,17 +60,9 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
      * @return int
      */
     public function get_total() {
-        // Set a default.
         $default = apply_filters( 'ultimeter_default_total', 100 );
         $total = get_post_meta( $this->id, '_ultimeter_woo_goal', true );
-        // If we still can't find a total, fallback to the goal amount entry, and finally the default.
-        if ( !$total ) {
-            $total = get_post_meta( $this->id, '_ultimeter_goal_amount', true ) ?? $default;
-        }
-        // Clean any unwanted commas.
-        $total = (int) str_replace( ',', '', $total );
-        $this->total = $total;
-        return $total;
+        return (int) str_replace( ',', '', ( $total ?: $default ) );
     }
 
     /**
@@ -80,45 +76,37 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
         if ( empty( $product ) || !class_exists( 'woocommerce' ) ) {
             return 0;
         }
-        // Create a new WC_Admin_Report object
-        include_once WC()->plugin_path() . '/includes/admin/reports/class-wc-admin-report.php';
-        $wc_report = new WC_Admin_Report();
-        $where_meta = array();
-        $where_meta[] = array(
-            'type'       => 'order_item_meta',
-            'meta_key'   => '_product_id',
-            'operator'   => 'in',
-            'meta_value' => $product,
-        );
-        // Based on woocoommerce/includes/admin/reports/class-wc-report-sales-by-product.php.
-        $gross = $wc_report->get_order_report_data( array(
-            'data'       => array(
-                '_line_subtotal' => array(
-                    'type'            => 'order_item_meta',
-                    'order_item_type' => 'line_item',
-                    'function'        => 'SUM',
-                    'name'            => 'gross',
-                ),
+        $args = array(
+            'status'  => array(
+                'completed',
+                'processing',
+                'on-hold',
+                'refunded'
             ),
-            'query_type' => 'get_var',
-            'where_meta' => $where_meta,
-        ) );
-        if ( $gross > 0 ) {
-            return $gross;
-        } else {
-            return 0;
+            'limit'   => -1,
+            'orderby' => 'date',
+            'order'   => 'DESC',
+        );
+        $orders = wc_get_orders( $args );
+        $sales = 0;
+        foreach ( $orders as $order ) {
+            foreach ( $order->get_items() as $item ) {
+                // Compare the item product ID directly with the supplied product ID.
+                if ( $item->get_product_id() === (int) $product ) {
+                    $sales += $item->get_total();
+                }
+            }
         }
+        return $sales;
     }
 
     /**
-     * The output type controls how the values are rendered on the front end. It should always be one of 3 types:
-     * ultimeter_currency, ultimeter_percentage, or ultimeter_custom.
+     * The output type controls how the values are rendered on the front end.
      *
      * @return string
      */
     public function get_output_type() {
-        $output_type = 'ultimeter_currency';
-        return $output_type;
+        return 'ultimeter_currency';
     }
 
     /**
@@ -130,54 +118,55 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
         $current_range = get_post_meta( $this->id, '_ultimeter_ultwoo_time', true );
         if ( empty( $current_range ) || 'all_time' === $current_range ) {
             return false;
+            // No date filtering.
         }
         switch ( $current_range ) {
             case 'custom':
                 $from_to = get_post_meta( $this->id, '_ultimeter_ultwoo_time_custom_range', true );
                 $start = sanitize_text_field( get_post_meta( $this->id, '_ultimeter_ultwoo_time_start_date', true ) );
                 $end = sanitize_text_field( get_post_meta( $this->id, '_ultimeter_ultwoo_time_end_date', true ) );
-                if ( isset( $from_to ) ) {
-                    $start = $from_to['from'];
-                    $end = $from_to['to'];
-                    $start_date = strtotime( $start );
-                    if ( empty( $end ) ) {
-                        $end_date = strtotime( 'midnight' );
-                    } else {
-                        $end_date = strtotime( 'midnight', strtotime( $end ) );
-                    }
+                // Handle custom ranges.
+                if ( isset( $from_to['from'], $from_to['to'] ) ) {
+                    $start_date = strtotime( $from_to['from'] );
+                    $end_date = strtotime( $from_to['to'] );
+                    return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
                 } elseif ( isset( $start ) && isset( $end ) ) {
                     $start_date = strtotime( $start );
-                    if ( empty( $end ) ) {
-                        $end_date = strtotime( 'midnight' );
-                    } else {
-                        $end_date = strtotime( 'midnight', strtotime( $end ) );
-                    }
-                } else {
-                    return false;
+                    $end_date = strtotime( $end );
+                    return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
+                } elseif ( isset( $start ) ) {
+                    // Handle "after" queries.
+                    $start_date = strtotime( $start );
+                    return '>=' . gmdate( 'Y-m-d H:i:s', $start_date );
+                } elseif ( isset( $end ) ) {
+                    // Handle "before" queries.
+                    $end_date = strtotime( $end );
+                    return '<=' . gmdate( 'Y-m-d H:i:s', $end_date );
                 }
                 break;
             case 'year':
+                // Yearly range.
                 $start_date = strtotime( gmdate( 'Y-01-01' ) );
                 $end_date = strtotime( 'now' );
-                break;
+                return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
             case 'last_month':
-                $first_day_current_month = strtotime( gmdate( 'Y-m-01' ) );
-                $start_date = strtotime( gmdate( 'Y-m-01', strtotime( '-1 DAY', $first_day_current_month ) ) );
-                $end_date = strtotime( gmdate( 'Y-m-t', strtotime( '-1 DAY', $first_day_current_month ) ) );
-                break;
+                // Last month's range.
+                $start_date = strtotime( 'first day of last month' );
+                $end_date = strtotime( 'last day of last month' );
+                return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
             case 'month':
+                // Current month's range.
                 $start_date = strtotime( gmdate( 'Y-m-01' ) );
                 $end_date = strtotime( 'now' );
-                break;
+                return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
             case '7day':
-                $start_date = strtotime( '-6 days', strtotime( 'midnight' ) );
+                // Last 7 days range.
+                $start_date = strtotime( '-6 days' );
                 $end_date = strtotime( 'now' );
-                break;
+                return gmdate( 'Y-m-d H:i:s', $start_date ) . '...' . gmdate( 'Y-m-d H:i:s', $end_date );
+            default:
+                return false;
         }
-        return array(
-            'start_date' => $start_date,
-            'end_date'   => $end_date,
-        );
     }
 
 }

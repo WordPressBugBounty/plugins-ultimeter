@@ -5,15 +5,13 @@
  * Plugin Name:       Ultimeter - the Ultimate Progress and Goals Meter
  * Plugin URI:        https://ultimeter.app
  * Description:       The most advanced progress and goals meter for WordPress
- * Version:           3.0.5
+ * Version:           3.0.7
  * Author:            Bouncingsprout Studio
  * Author URI:        https://ultimeter.app
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ultimeter
  * Domain Path:       /languages
- * WC requires at least: 3.0.0
- * WC tested up to:   9.3
  *
  */
 // If this file is called directly, abort.
@@ -61,7 +59,7 @@ if ( function_exists( 'upgm_fs' ) ) {
         do_action( 'upgm_fs_loaded' );
     }
     // Current version.
-    define( 'ULTIMETER_VERSION', '3.0.5' );
+    define( 'ULTIMETER_VERSION', '3.0.7' );
     define( 'ULTIMETER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
     define( 'ULTIMETER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
     // Define a constant to hold our support page.

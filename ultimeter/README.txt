@@ -4,7 +4,7 @@ Tags: progress bar, meter, fundraising, progress, goal
 Requires at least: 3.0.1
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 3.0.5
+Stable tag: 3.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,12 @@ If you need more, users of our free version can get help over at our [support fo
 5. Example of celebrations
 
 == Changelog ==
+
+= 3.0.7 =
+* Freemius Upgrade
+
+= 3.0.6 =
+* Adds support for HPOS
 
 = 3.0.5 =
 * Fix bug where percentages over 100 would traverse further than emd of meter

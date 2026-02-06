@@ -46,6 +46,8 @@ class Ultimeter_WooCommerce_Ultimeter_Legacy extends Ultimeter_Ultimeter {
         }
         // Clean any unwanted commas.
         $current = (int) str_replace( ',', '', $current );
+        // Apply filter to allow modification of the current value.
+        $current = apply_filters( 'ultimeter_progress', $current, $this->id );
         $this->current = $current;
         return $current;
     }

@@ -2,9 +2,9 @@
 Contributors: bouncingsprout
 Tags: progress bar, meter, fundraising, progress, goal
 Requires at least: 3.0.1
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 3.0.7
+Stable tag: 3.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,11 @@ If you need more, users of our free version can get help over at our [support fo
 5. Example of celebrations
 
 == Changelog ==
+
+= 3.0.8 =
+* Fix 3rd-party file failing
+* Freemius Upgrade
+* WordPress version bump
 
 = 3.0.7 =
 * Freemius Upgrade

@@ -41,6 +41,8 @@ class Ultimeter_WooCommerce_Ultimeter extends Ultimeter_Ultimeter {
         // Set a default.
         $default = apply_filters( 'ultimeter_default_current', 0 );
         $current = $this->get_sales_by_product( $this->get_products() );
+        // Apply filter to allow modification of the current value.
+        $current = apply_filters( 'ultimeter_progress', $current, $this->id );
         return ( $current ?: $default );
     }
 

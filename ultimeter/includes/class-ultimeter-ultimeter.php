@@ -245,6 +245,8 @@ class Ultimeter_Ultimeter {
         }
         // Clean any unwanted commas.
         $current = (float) str_replace( ',', '', $current );
+        // Apply filter to allow modification of the current value.
+        $current = apply_filters( 'ultimeter_progress', $current, $this->id );
         $this->current = $current;
         return $current;
     }

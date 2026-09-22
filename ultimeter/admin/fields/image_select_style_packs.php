@@ -27,7 +27,7 @@ if ( ! class_exists( 'CSF_Field_image_select_style_packs' ) ) {
 
 			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
-			echo $this->field_before();
+			echo wp_kses_post( $this->field_before() );
 
 			if ( ! empty( $args['packs'] ) ) {
 				echo '<div class="csf-siblings csf--image-group' . esc_attr( $inline ) . '" data-multiple="' . esc_attr( $args['multiple'] ) . '">';
@@ -45,7 +45,7 @@ if ( ! class_exists( 'CSF_Field_image_select_style_packs' ) ) {
 					echo '<div class="csf--sibling csf--image' . esc_attr( $active ) . '" style="order:' . esc_attr( $pack['order'] ) . '">';
 					echo '<figure>';
 					echo '<img src="' . esc_url( $pack['src'] ) . '" alt="img-' . esc_attr( $num ++ ) . '" />';
-					echo '<input data-pack="' . esc_attr( $data ) . '" type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $value_to_pass ) . '"' . $this->field_attributes() . esc_attr( $checked ) . '/>';
+					echo '<input data-pack="' . esc_attr( $data ) . '" type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $value_to_pass ) . '"' . wp_kses_data( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
 					echo '</figure>';
 					echo '<label>' . esc_attr( $pack['title'] ) . '</label>';
 					echo '</div>';
@@ -54,7 +54,7 @@ if ( ! class_exists( 'CSF_Field_image_select_style_packs' ) ) {
 				echo '</div>';
 			}
 
-			echo $this->field_after();
+			echo wp_kses_post( $this->field_after() );
 		}
 
 		public function output() {

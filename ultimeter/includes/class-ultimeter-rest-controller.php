@@ -3,6 +3,10 @@
  * File that holds our REST controller
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class that holds our REST controller
  */
@@ -84,7 +88,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['id'] ) ) {
 			return new WP_Error(
 				'rest_post_exists',
-				__( 'Cannot create existing Ultimeter.' ),
+				__( 'Cannot create existing Ultimeter.', 'ultimeter' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -94,7 +98,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['author'] ) && get_current_user_id() !== $request['author'] && ! current_user_can( $post_type->cap->edit_others_posts ) ) {
 			return new WP_Error(
 				'rest_cannot_edit_others',
-				__( 'Sorry, you are not allowed to create Ultimeters as this user.' ),
+				__( 'Sorry, you are not allowed to create Ultimeters as this user.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -102,7 +106,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['sticky'] ) && ! current_user_can( $post_type->cap->edit_others_posts ) && ! current_user_can( $post_type->cap->publish_posts ) ) {
 			return new WP_Error(
 				'rest_cannot_assign_sticky',
-				__( 'Sorry, you are not allowed to make Ultimeters sticky.' ),
+				__( 'Sorry, you are not allowed to make Ultimeters sticky.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -110,7 +114,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! current_user_can( $post_type->cap->create_posts ) ) {
 			return new WP_Error(
 				'rest_cannot_create',
-				__( 'Sorry, you are not allowed to create Ultimeters as this user.' ),
+				__( 'Sorry, you are not allowed to create Ultimeters as this user.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -121,7 +125,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 			if ( 'Zapier' === $key ) {
 				return new WP_Error(
 					'rest_cannot_edit',
-					__( 'Only holders of an Ultimeter Enterprise licence can create Ultimeters using Zapier.' ),
+					__( 'Only holders of an Ultimeter Enterprise licence can create Ultimeters using Zapier.', 'ultimeter' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -130,7 +134,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! upgm_fs()->is_plan_or_trial( 'enterprise' ) && ! class_exists( 'Ultimeter_REST_Addon' ) ) {
 			return new WP_Error(
 				'rest_cannot_create',
-				__( 'Sorry, you are not allowed to create this post type.' ),
+				__( 'Sorry, you are not allowed to create this post type.', 'ultimeter' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -142,7 +146,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['id'] ) ) {
 			return new WP_Error(
 				'rest_post_exists',
-				__( 'Cannot create existing Ultimeter.' ),
+				__( 'Cannot create existing Ultimeter.', 'ultimeter' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -221,7 +225,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 				if ( ! $user_obj ) {
 					return new WP_Error(
 						'rest_invalid_author',
-						__( 'Invalid author ID.' ),
+						__( 'Invalid author ID.', 'ultimeter' ),
 						array( 'status' => 400 )
 					);
 				}
@@ -371,8 +375,9 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 
 		$post_before    = get_post( $request['id'] );
 		$post           = new stdClass();
-		$current_status = '';
+		$current_status = $post_before ? $post_before->post_status : '';
 		$post->ID       = $post_before->ID;
+		$post_type      = get_post_type_object( $this->post_type );
 
 		$schema = $this->get_item_schema();
 
@@ -415,7 +420,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 				$post->edit_date                               = true;
 			}
 		} elseif ( ! empty( $schema['properties']['date_gmt'] ) && ! empty( $request['date_gmt'] ) ) {
-			$current_date = isset( $post->ID ) ? get_post( $prepared_post->ID )->post_date_gmt : false;
+			$current_date = isset( $post->ID ) ? get_post( $post->ID )->post_date_gmt : false;
 			$date_data    = rest_get_date_with_gmt( $request['date_gmt'], true );
 
 			if ( ! empty( $date_data ) && $current_date !== $date_data[1] ) {
@@ -449,7 +454,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 				if ( ! $user_obj ) {
 					return new WP_Error(
 						'rest_invalid_author',
-						__( 'Invalid author ID.' ),
+						__( 'Invalid author ID.', 'ultimeter' ),
 						array( 'status' => 400 )
 					);
 				}
@@ -559,7 +564,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( $post && ! current_user_can( 'edit_posts' ) ) {
 			return new WP_Error(
 				'rest_cannot_edit',
-				__( 'Sorry, you are not allowed to edit this Ultimeter. Please ensure you are correctly authenticated.' ),
+				__( 'Sorry, you are not allowed to edit this Ultimeter. Please ensure you are correctly authenticated.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -567,7 +572,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['author'] ) && get_current_user_id() !== $request['author'] && ! current_user_can( $post_type->cap->edit_others_posts ) ) {
 			return new WP_Error(
 				'rest_cannot_edit_others',
-				__( 'Sorry, you are not allowed to update Ultimeters as this user. Please ensure you are correctly authenticated.' ),
+				__( 'Sorry, you are not allowed to update Ultimeters as this user. Please ensure you are correctly authenticated.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -575,7 +580,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! empty( $request['sticky'] ) && ! current_user_can( $post_type->cap->edit_others_posts ) && ! current_user_can( $post_type->cap->publish_posts ) ) {
 			return new WP_Error(
 				'rest_cannot_assign_sticky',
-				__( 'Sorry, you are not allowed to make Ultimeters sticky. Please ensure you are correctly authenticated.' ),
+				__( 'Sorry, you are not allowed to make Ultimeters sticky. Please ensure you are correctly authenticated.', 'ultimeter' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -586,7 +591,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 			if ( 'Zapier' === $key ) {
 				return new WP_Error(
 					'rest_cannot_edit',
-					__( 'Only holders of an Ultimeter Enterprise licence can edit Ultimeters using Zapier.' ),
+					__( 'Only holders of an Ultimeter Enterprise licence can edit Ultimeters using Zapier.', 'ultimeter' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -595,7 +600,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		if ( ! upgm_fs()->is_plan_or_trial( 'enterprise' ) && ! class_exists( 'Ultimeter_REST_Addon' ) ) {
 			return new WP_Error(
 				'rest_cannot_edit',
-				__( 'Sorry, you are not allowed to edit this post.' ),
+				__( 'Sorry, you are not allowed to edit this post.', 'ultimeter' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -622,7 +627,7 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		}
 
 		if ( isset( $schema['properties']['title'] ) ) {
-			$post_data['title'] = apply_filters( 'the_title', $post->post_title, $post );
+			$post_data['title'] = get_the_title( $post );
 		}
 
 		if ( isset( $schema['properties']['date'] ) ) {
@@ -716,6 +721,47 @@ class Ultimeter_REST_Controller extends WP_REST_Controller {
 		);
 
 		return $this->schema;
+	}
+
+	/**
+	 * Determines the post status for a request, matching core REST post handling.
+	 *
+	 * @param string       $post_status Requested status.
+	 * @param WP_Post_Type $post_type   Post type object.
+	 * @return string|WP_Error
+	 */
+	protected function handle_status_param( $post_status, $post_type ) {
+		switch ( $post_status ) {
+			case 'draft':
+			case 'pending':
+				break;
+			case 'private':
+				if ( ! current_user_can( $post_type->cap->publish_posts ) ) {
+					return new WP_Error(
+						'rest_cannot_publish',
+						__( 'Sorry, you are not allowed to create private posts in this post type.', 'ultimeter' ),
+						array( 'status' => rest_authorization_required_code() )
+					);
+				}
+				break;
+			case 'publish':
+			case 'future':
+				if ( ! current_user_can( $post_type->cap->publish_posts ) ) {
+					return new WP_Error(
+						'rest_cannot_publish',
+						__( 'Sorry, you are not allowed to publish posts in this post type.', 'ultimeter' ),
+						array( 'status' => rest_authorization_required_code() )
+					);
+				}
+				break;
+			default:
+				if ( ! get_post_status_object( $post_status ) ) {
+					$post_status = 'draft';
+				}
+				break;
+		}
+
+		return $post_status;
 	}
 
 	/**

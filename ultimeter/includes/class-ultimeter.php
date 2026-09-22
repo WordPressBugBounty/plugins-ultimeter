@@ -36,23 +36,13 @@ class Ultimeter {
         require_once ULTIMETER_PLUGIN_PATH . 'includes/class-ultimeter-style-pack.php';
         require_once ULTIMETER_PLUGIN_PATH . 'includes/ultimeter-functions.php';
         // Hooks.
-        add_action( 'plugins_loaded', array($this, 'load_plugin_textdomain') );
         add_action( 'wp_enqueue_scripts', array($this, 'enqueue_styles') );
         add_action( 'wp_enqueue_scripts', array($this, 'enqueue_scripts') );
         add_action( 'init', array($this, 'register_shortcodes') );
     }
 
     /**
-     * Load plugin textdomain for i18n features.
-     *
-     * @return void
-     */
-    public function load_plugin_textdomain() {
-        load_plugin_textdomain( 'ultimeter', false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/' );
-    }
-
-    /**
-     * Register the stylesheets for the public-facing side of the site.
+     * Register the stylesheets for the public-facing side of the plugin.
      */
     public function enqueue_styles() {
         wp_enqueue_style(

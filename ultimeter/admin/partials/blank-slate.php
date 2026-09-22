@@ -5,6 +5,10 @@
  * @since 2.2
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 
 <div class="ultimeter-blank-slate">

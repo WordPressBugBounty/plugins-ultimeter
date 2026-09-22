@@ -234,96 +234,79 @@ class Ultimeter_Admin {
      * @since    2.2.4
      */
     public function duplicate() {
-        global $wpdb;
-        if ( !(isset( $_GET['post'] ) || isset( $_POST['post'] ) || isset( $_REQUEST['action'] ) && 'duplicate_post_as_draft' == $_REQUEST['action']) ) {
-            wp_die( 'No post to duplicate has been supplied!' );
+        if ( !(isset( $_GET['post'] ) || isset( $_POST['post'] ) || isset( $_REQUEST['action'] ) && 'duplicate_post_as_draft' === $_REQUEST['action']) ) {
+            wp_die( esc_html__( 'No post to duplicate has been supplied!', 'ultimeter' ) );
         }
-        /*
-         * Nonce verification
-         */
-        if ( !isset( $_GET['duplicate_nonce'] ) || !wp_verify_nonce( $_GET['duplicate_nonce'], basename( __FILE__ ) ) ) {
+        $nonce = ( isset( $_GET['duplicate_nonce'] ) ? sanitize_text_field( wp_unslash( $_GET['duplicate_nonce'] ) ) : '' );
+        if ( !wp_verify_nonce( $nonce, basename( __FILE__ ) ) ) {
             return;
         }
-        /*
-         * get the original post id
-         */
-        $post_id = ( isset( $_GET['post'] ) ? absint( $_GET['post'] ) : absint( $_POST['post'] ) );
-        /*
-         * and all the original post data then
-         */
+        if ( !current_user_can( 'edit_posts' ) ) {
+            wp_die( esc_html__( 'You do not have permission to duplicate this Ultimeter.', 'ultimeter' ) );
+        }
+        $post_id = 0;
+        if ( isset( $_GET['post'] ) ) {
+            $post_id = absint( wp_unslash( $_GET['post'] ) );
+        } elseif ( isset( $_POST['post'] ) ) {
+            $post_id = absint( wp_unslash( $_POST['post'] ) );
+        }
         $post = get_post( $post_id );
-        /*
-         * set current user as new author
-         */
+        if ( !$post || 'ultimeter' !== $post->post_type ) {
+            wp_die( esc_html( sprintf( 
+                /* translators: %d: original post ID */
+                __( 'Post creation failed, could not find original post: %d', 'ultimeter' ),
+                $post_id
+             ) ) );
+        }
+        if ( !current_user_can( 'edit_post', $post_id ) ) {
+            wp_die( esc_html__( 'You do not have permission to duplicate this Ultimeter.', 'ultimeter' ) );
+        }
         $current_user = wp_get_current_user();
         $new_post_author = $current_user->ID;
-        /*
-         * if post data exists, create the post duplicate
-         */
-        if ( isset( $post ) && $post != null ) {
-            /*
-             * new post data array
-             */
-            $args = array(
-                'comment_status' => $post->comment_status,
-                'ping_status'    => $post->ping_status,
-                'post_author'    => $new_post_author,
-                'post_content'   => $post->post_content,
-                'post_excerpt'   => $post->post_excerpt,
-                'post_name'      => $post->post_name,
-                'post_parent'    => $post->post_parent,
-                'post_password'  => $post->post_password,
-                'post_status'    => 'draft',
-                'post_title'     => $post->post_title . ' (copy)',
-                'post_type'      => $post->post_type,
-                'to_ping'        => $post->to_ping,
-                'menu_order'     => $post->menu_order,
-            );
-            /*
-             * insert the post by wp_insert_post() function
-             */
-            $new_post_id = wp_insert_post( $args );
-            /*
-             * get all current post terms ad set them to the new post draft
-             */
-            $taxonomies = get_object_taxonomies( $post->post_type );
-            // returns array of taxonomy names for post type, ex array("category", "post_tag");
-            foreach ( $taxonomies as $taxonomy ) {
-                $post_terms = wp_get_object_terms( $post_id, $taxonomy, array(
-                    'fields' => 'slugs',
-                ) );
-                wp_set_object_terms(
-                    $new_post_id,
-                    $post_terms,
-                    $taxonomy,
-                    false
-                );
-            }
-            /*
-             * duplicate all post meta just in two SQL queries
-             */
-            $post_meta_infos = $wpdb->get_results( "SELECT meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id={$post_id}" );
-            if ( count( $post_meta_infos ) != 0 ) {
-                $sql_query = "INSERT INTO {$wpdb->postmeta} (post_id, meta_key, meta_value) ";
-                foreach ( $post_meta_infos as $meta_info ) {
-                    $meta_key = $meta_info->meta_key;
-                    if ( $meta_key == '_wp_old_slug' ) {
-                        continue;
-                    }
-                    $meta_value = addslashes( $meta_info->meta_value );
-                    $sql_query_sel[] = "SELECT {$new_post_id}, '{$meta_key}', '{$meta_value}'";
-                }
-                $sql_query .= implode( ' UNION ALL ', $sql_query_sel );
-                $wpdb->query( $sql_query );
-            }
-            /*
-             * finally, redirect to the edit post screen for the new draft
-             */
-            wp_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
-            exit;
-        } else {
-            wp_die( 'Post creation failed, could not find original post: ' . $post_id );
+        $args = array(
+            'comment_status' => $post->comment_status,
+            'ping_status'    => $post->ping_status,
+            'post_author'    => $new_post_author,
+            'post_content'   => $post->post_content,
+            'post_excerpt'   => $post->post_excerpt,
+            'post_name'      => $post->post_name,
+            'post_parent'    => $post->post_parent,
+            'post_password'  => $post->post_password,
+            'post_status'    => 'draft',
+            'post_title'     => $post->post_title . ' (copy)',
+            'post_type'      => $post->post_type,
+            'to_ping'        => $post->to_ping,
+            'menu_order'     => $post->menu_order,
+        );
+        $new_post_id = wp_insert_post( $args );
+        if ( is_wp_error( $new_post_id ) || !$new_post_id ) {
+            wp_die( esc_html__( 'Post creation failed.', 'ultimeter' ) );
         }
+        $taxonomies = get_object_taxonomies( $post->post_type );
+        foreach ( $taxonomies as $taxonomy ) {
+            $post_terms = wp_get_object_terms( $post_id, $taxonomy, array(
+                'fields' => 'slugs',
+            ) );
+            wp_set_object_terms(
+                $new_post_id,
+                $post_terms,
+                $taxonomy,
+                false
+            );
+        }
+        $post_meta = get_post_meta( $post_id );
+        if ( !empty( $post_meta ) ) {
+            foreach ( $post_meta as $meta_key => $meta_values ) {
+                if ( '_wp_old_slug' === $meta_key ) {
+                    continue;
+                }
+                foreach ( (array) $meta_values as $meta_value ) {
+                    add_post_meta( $new_post_id, $meta_key, maybe_unserialize( $meta_value ) );
+                }
+            }
+        }
+        wp_safe_redirect( admin_url( 'post.php?action=edit&post=' . absint( $new_post_id ) ) );
+        exit;
     }
 
     /**
@@ -334,7 +317,7 @@ class Ultimeter_Admin {
     public function duplicate_link_row( $actions, $post ) {
         // Check for your post type.
         if ( $post->post_type == 'ultimeter' && current_user_can( 'edit_posts' ) ) {
-            $actions['duplicate'] = '<a href="' . wp_nonce_url( 'admin.php?action=duplicate_ultimeter&post=' . $post->ID, basename( __FILE__ ), 'duplicate_nonce' ) . '" title="Duplicate this item" rel="permalink">Duplicate</a>';
+            $actions['duplicate'] = '<a href="' . esc_url( wp_nonce_url( admin_url( 'admin.php?action=duplicate_ultimeter&post=' . absint( $post->ID ) ), basename( __FILE__ ), 'duplicate_nonce' ) ) . '" title="' . esc_attr__( 'Duplicate this item', 'ultimeter' ) . '" rel="permalink">' . esc_html__( 'Duplicate', 'ultimeter' ) . '</a>';
         }
         return $actions;
     }
@@ -690,12 +673,16 @@ class Ultimeter_Admin {
 				<h2>Create your own meter</h2>
 				<p>Use your company or organisation's own logo or any image you choose. Upload an empty version, and a filled version, and Ultimeter will handle the rest. Use your meter to track any of the default data types. Add a dynamic counter to the meter.</p>
 				<a class="ultimeter-upsell-button button" href="<?php 
-        echo upgm_fs()->get_upgrade_url();
-        ?>">Upgrade Now</a>
+        echo esc_url( upgm_fs()->get_upgrade_url() );
+        ?>"><?php 
+        esc_html_e( 'Upgrade Now', 'ultimeter' );
+        ?></a>
 			</div>
 			<div class="ultimeter-upsell-right">
 				<img src="<?php 
-        echo plugin_dir_url( __DIR__ ) . 'admin/assets/images/custom-upsell.png';
+        echo esc_url( plugin_dir_url( __DIR__ ) . 'admin/assets/images/custom-upsell.png' );
+        ?>" alt="<?php 
+        esc_attr_e( 'Custom meter example', 'ultimeter' );
         ?>">
 			</div>
 		</div>
@@ -718,12 +705,16 @@ class Ultimeter_Admin {
 				<h2>Milestones</h2>
 				<p>One of Ultimeter's most popular features, milestones, allow you to display key events inside your meter. Add as many as you need, using most of the pre-built meter types. Imagine you are building a school. Why not show when the foundations are dug, the walls go up, and the roof is put on? Acknowledging milestones motivate supporters to keep up their efforts.</p>
 				<a class="ultimeter-upsell-button button" href="<?php 
-        echo upgm_fs()->get_upgrade_url();
-        ?>">Upgrade Now</a>
+        echo esc_url( upgm_fs()->get_upgrade_url() );
+        ?>"><?php 
+        esc_html_e( 'Upgrade Now', 'ultimeter' );
+        ?></a>
 			</div>
 			<div class="ultimeter-upsell-right">
 				<img src="<?php 
-        echo plugin_dir_url( __DIR__ ) . 'admin/assets/images/milestones-upsell.png';
+        echo esc_url( plugin_dir_url( __DIR__ ) . 'admin/assets/images/milestones-upsell.png' );
+        ?>" alt="<?php 
+        esc_attr_e( 'Milestones example', 'ultimeter' );
         ?>">
 			</div>
 		</div>
@@ -746,12 +737,16 @@ class Ultimeter_Admin {
 				<h2>Celebrate your progress in style</h2>
 				<p>Why not include an animated confetti effect when your visitors see your progress hit the top of your meter? Control the size and duration of the effect to suit your site.</p>
 				<a class="ultimeter-upsell-button button" href="<?php 
-        echo upgm_fs()->get_upgrade_url();
-        ?>">Upgrade Now</a>
+        echo esc_url( upgm_fs()->get_upgrade_url() );
+        ?>"><?php 
+        esc_html_e( 'Upgrade Now', 'ultimeter' );
+        ?></a>
 			</div>
 			<div class="ultimeter-upsell-right">
 				<img src="<?php 
-        echo plugin_dir_url( __DIR__ ) . 'admin/assets/images/celebrations-upsell.png';
+        echo esc_url( plugin_dir_url( __DIR__ ) . 'admin/assets/images/celebrations-upsell.png' );
+        ?>" alt="<?php 
+        esc_attr_e( 'Celebrations example', 'ultimeter' );
         ?>">
 			</div>
 		</div>
@@ -794,7 +789,7 @@ class Ultimeter_Admin {
     function ultimeter_change_default_title( $title ) {
         $screen = get_current_screen();
         if ( 'ultimeter' == $screen->post_type ) {
-            $title = __( 'Enter Ultimeter name here', 'give' );
+            $title = __( 'Enter Ultimeter name here', 'ultimeter' );
         }
         return $title;
     }
@@ -835,11 +830,7 @@ class Ultimeter_Admin {
         if ( 'ultimeter' === $post->post_type ) {
             // Shortcode column with select all input
             $post_id = absint( $post->ID );
-            printf( 
-                // translators: %s: ID of this Ultimeter
-                __( '<div class="misc-pub-section ultimeter-ID"><span> Ultimeter ID: <strong>%s</strong></span></div>', 'ultimeter' ),
-                esc_attr( $post_id )
-             );
+            printf( '<div class="misc-pub-section ultimeter-ID"><span>%1$s <strong>%2$s</strong></span></div>', esc_html__( 'Ultimeter ID:', 'ultimeter' ), esc_html( $post_id ) );
         }
     }
 
@@ -859,33 +850,49 @@ class Ultimeter_Admin {
      * @since: 2.2.4
      */
     public function ultimeter_dashboard_widget_content( $post, $callback_args ) {
-        global $wpdb;
-        $count = $wpdb->get_var( "SELECT COUNT(ID) FROM {$wpdb->posts} WHERE post_type = 'ultimeter' and post_status = 'publish'" );
+        $counts = wp_count_posts( 'ultimeter' );
+        $count = ( isset( $counts->publish ) ? (int) $counts->publish : 0 );
         $url = admin_url( 'edit.php?post_type=ultimeter' );
         $logo = plugin_dir_url( __FILE__ ) . 'assets/images/logo.svg';
         $support_url = 'https://wordpress.org/support/plugin/ultimeter/';
-        echo "<img src='{$logo}' width='20' style='margin-right: 5px;vertical-align: middle;'><a href='{$url}' style='text-decoration: none;'>You have {$count}  Ultimeters ready to use</a>";
-        echo "<p>Need help? Contact us <a href='{$support_url}' target='_blank' style='text-decoration: none;'>here</a>. For support and FAQs visit the <a href='" . ULTIMETER_SUPPORT . "' target='_blank' style='text-decoration: none;'> Ultimeter Knowledgebase</a>.</p>";
-        echo '<h3><strong>Latest News</strong></h3>';
-        // Get RSS Feed(s)
+        printf(
+            '<img src="%1$s" width="20" style="margin-right: 5px;vertical-align: middle;" alt="%2$s"><a href="%3$s" style="text-decoration: none;">%4$s</a>',
+            esc_url( $logo ),
+            esc_attr__( 'Ultimeter logo', 'ultimeter' ),
+            esc_url( $url ),
+            esc_html( sprintf( 
+                /* translators: %d: number of published Ultimeters */
+                _n(
+                    'You have %d Ultimeter ready to use',
+                    'You have %d Ultimeters ready to use',
+                    $count,
+                    'ultimeter'
+                ),
+                $count
+             ) )
+        );
+        printf(
+            '<p>%1$s <a href="%2$s" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">%3$s</a>. %4$s <a href="%5$s" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">%6$s</a>.</p>',
+            esc_html__( 'Need help? Contact us', 'ultimeter' ),
+            esc_url( $support_url ),
+            esc_html__( 'here', 'ultimeter' ),
+            esc_html__( 'For support and FAQs visit the', 'ultimeter' ),
+            esc_url( ULTIMETER_SUPPORT ),
+            esc_html__( 'Ultimeter Knowledgebase', 'ultimeter' )
+        );
+        echo '<h3><strong>' . esc_html__( 'Latest News', 'ultimeter' ) . '</strong></h3>';
         include_once ABSPATH . WPINC . '/feed.php';
-        // Get a SimplePie feed object from the specified feed source.
-        $rss = fetch_feed( 'https://ultimeter.app/tag/news/feed/ ' );
+        $rss = fetch_feed( 'https://ultimeter.app/tag/news/feed/' );
         $maxitems = 0;
         if ( !is_wp_error( $rss ) ) {
-            // Checks that the object is created correctly
-            // Figure out how many total items there are, but limit it to 5.
             $maxitems = $rss->get_item_quantity( 5 );
-            // Build an array of all the items, starting with element 0 (first element).
             $rss_items = $rss->get_items( 0, $maxitems );
         }
-        if ( $maxitems == 0 ) {
-            echo '<h3>Nope. No news. But check back soon!</h3>';
+        if ( 0 === $maxitems ) {
+            echo '<h3>' . esc_html__( 'Nope. No news. But check back soon!', 'ultimeter' ) . '</h3>';
         } else {
             foreach ( $rss_items as $item ) {
-                $url = esc_url( $item->get_permalink() );
-                $title = esc_html( $item->get_title() );
-                echo "<p><a href='{$url}' style='text-decoration: none;' target='_blank'>{$title}</a></p>";
+                printf( '<p><a href="%1$s" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">%2$s</a></p>', esc_url( $item->get_permalink() ), esc_html( $item->get_title() ) );
             }
         }
     }
@@ -903,7 +910,13 @@ class Ultimeter_Admin {
         // Only enqueue scripts for CPT on post type screen
         if ( 'ultimeter' === $post->post_type ) {
             if ( current_user_can( 'edit_posts' ) ) {
-                printf( '<div class="misc-pub-section"><a href="' . wp_nonce_url( 'admin.php?action=duplicate_ultimeter&post=' . $post->ID, basename( __FILE__ ), 'duplicate_nonce' ) . '" title="Create a new Ultimeter based on this one" rel="permalink"><button type="button" class="button ultimeter-duplicate-button"><span class="dashicons dashicons-welcome-add-page"></span> %1$s</button></a></div>', esc_html__( 'Duplicate', 'ultimeter' ) );
+                $duplicate_url = wp_nonce_url( admin_url( 'admin.php?action=duplicate_ultimeter&post=' . absint( $post->ID ) ), basename( __FILE__ ), 'duplicate_nonce' );
+                printf(
+                    '<div class="misc-pub-section"><a href="%1$s" title="%2$s" rel="permalink"><button type="button" class="button ultimeter-duplicate-button"><span class="dashicons dashicons-welcome-add-page"></span> %3$s</button></a></div>',
+                    esc_url( $duplicate_url ),
+                    esc_attr__( 'Create a new Ultimeter based on this one', 'ultimeter' ),
+                    esc_html__( 'Duplicate', 'ultimeter' )
+                );
             }
         }
     }
@@ -917,30 +930,43 @@ class Ultimeter_Admin {
         $post = get_post();
         $post_type = get_post_type( $post );
         $post_type_object = get_post_type_object( $post_type );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Core post messages read the revision ID from the query string.
+        $revision_id = ( isset( $_GET['revision'] ) ? absint( wp_unslash( $_GET['revision'] ) ) : 0 );
+        $revision_title = ( $revision_id ? wp_post_revision_title( $revision_id, false ) : false );
         $messages['ultimeter'] = array(
             0  => '',
             1  => __( 'Ultimeter updated.', 'ultimeter' ),
             2  => __( 'Custom field updated.', 'ultimeter' ),
             3  => __( 'Custom field deleted.', 'ultimeter' ),
             4  => __( 'Ultimeter updated.', 'ultimeter' ),
-            5  => ( isset( $_GET['revision'] ) ? sprintf( __( 'Ultimeter restored to revision from %s', 'ultimeter' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false ),
+            5  => ( $revision_title ? sprintf( 
+                /* translators: %s: date and time of the revision */
+                __( 'Ultimeter restored to revision from %s', 'ultimeter' ),
+                $revision_title
+             ) : false ),
             6  => __( 'Ultimeter published.', 'ultimeter' ),
             7  => __( 'Ultimeter saved.', 'ultimeter' ),
             8  => __( 'Ultimeter submitted.', 'ultimeter' ),
             9  => sprintf( 
+                /* translators: %s: scheduled date */
                 __( 'Ultimeter scheduled for: <strong>%1$s</strong>.', 'ultimeter' ),
-                // translators: Publish box date format, see http://php.net/date
-                date_i18n( __( 'M j, Y @ G:i', 'ultimeter' ), strtotime( $post->post_date ) )
+                date_i18n( 
+                    /* translators: Publish box date format, see https://www.php.net/manual/en/datetime.format.php */
+                    __( 'M j, Y @ G:i', 'ultimeter' ),
+                    strtotime( $post->post_date )
+                 )
              ),
             10 => __( 'Ultimeter draft updated.', 'ultimeter' ),
         );
         if ( $post_type_object->publicly_queryable && 'ultimeter' === $post_type ) {
-            $helper = sprintf( __( ' To use your new Ultimeter, insert the following shortcode into a page: [ultimeter id="%s"], use the \'Copy Shortcode\' button below, add an Ultimeter Widget, or use the all new Ultimeter Block. The choice is yours.', 'ultimeter' ), $post->ID );
+            $helper = sprintf( 
+                /* translators: %s: Ultimeter post ID */
+                __( ' To use your new Ultimeter, insert the following shortcode into a page: [ultimeter id="%s"], use the \'Copy Shortcode\' button below, add an Ultimeter Widget, or use the all new Ultimeter Block. The choice is yours.', 'ultimeter' ),
+                absint( $post->ID )
+             );
             $messages[$post_type][1] .= $helper;
             $messages[$post_type][6] .= $helper;
             $messages[$post_type][9] .= $helper;
-            $messages[$post_type][8];
-            $messages[$post_type][10];
         }
         return $messages;
     }

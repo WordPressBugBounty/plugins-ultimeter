@@ -24,7 +24,7 @@ if ( ! class_exists( 'CSF_Field_connected_image_select' ) ) {
 
 			$value = ( is_array( $this->value ) ) ? $this->value : array_filter( (array) $this->value );
 
-			echo $this->field_before();
+			echo wp_kses_post( $this->field_before() );
 
 			echo '<div class="csf-connected-image-select-group-container" data-depend-id="' . esc_attr( $this->field['id'] ) . '">';
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'CSF_Field_connected_image_select' ) ) {
 						echo '<div class="csf--sibling csf--image' . esc_attr( $active ) . '" style="order: ' . esc_attr( $item['order'] ) . '">';
 						echo '<figure>';
 						echo '<img src="' . esc_url( $item['src'] ) . '" alt="img-' . esc_attr( $num ++ ) . '-' . esc_attr( $item['id'] ) . '" />';
-						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $item['id'] ) . '"' . $this->field_attributes() . esc_attr( $checked ) . '/>';
+						echo '<input type="' . esc_attr( $type ) . '" name="' . esc_attr( $this->field_name( $extra ) ) . '" value="' . esc_attr( $item['id'] ) . '"' . wp_kses_data( $this->field_attributes() ) . esc_attr( $checked ) . '/>';
 					} else {
 						echo '<div title="A valid licence is required to use this meter type" class="csf--image csf--free" style="order: ' . esc_attr( $item['order'] ) . '">';
 						echo '<figure>';
@@ -70,7 +70,7 @@ if ( ! class_exists( 'CSF_Field_connected_image_select' ) ) {
 
 			echo '</div>';
 
-			echo $this->field_after();
+			echo wp_kses_post( $this->field_after() );
 		}
 
 		public function output() {

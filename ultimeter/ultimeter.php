@@ -5,7 +5,9 @@
  * Plugin Name:       Ultimeter - the Ultimate Progress and Goals Meter
  * Plugin URI:        https://ultimeter.app
  * Description:       The most advanced progress and goals meter for WordPress
- * Version:           3.0.8
+ * Version:           3.1.0
+ * Requires at least: 6.0
+ * Requires PHP:      7.0
  * Author:            Bouncingsprout Studio
  * Author URI:        https://ultimeter.app
  * License:           GPL-2.0+
@@ -27,27 +29,31 @@ if ( function_exists( 'upgm_fs' ) ) {
          * Create a helper function for easy SDK access.
          */
         function upgm_fs() {
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- Freemius bootstrap function.
             global $upgm_fs;
+            // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Freemius SDK global.
             if ( !isset( $upgm_fs ) ) {
                 // Activate multisite network integration.
                 if ( !defined( 'WP_FS__PRODUCT_1825_MULTISITE' ) ) {
                     define( 'WP_FS__PRODUCT_1825_MULTISITE', true );
                 }
                 // Include Freemius SDK.
-                require_once dirname( __FILE__ ) . '/freemius/start.php';
+                require_once dirname( __FILE__ ) . '/vendor/freemius/start.php';
                 $upgm_fs = fs_dynamic_init( array(
-                    'id'             => '1825',
-                    'slug'           => 'ultimeter',
-                    'type'           => 'plugin',
-                    'public_key'     => 'pk_08f596c6bccb4b5b1940526b0176a',
-                    'is_premium'     => false,
-                    'has_addons'     => false,
-                    'has_paid_plans' => true,
-                    'menu'           => array(
+                    'id'               => '1825',
+                    'slug'             => 'ultimeter',
+                    'type'             => 'plugin',
+                    'public_key'       => 'pk_08f596c6bccb4b5b1940526b0176a',
+                    'is_premium'       => false,
+                    'premium_suffix'   => '',
+                    'has_addons'       => false,
+                    'has_paid_plans'   => true,
+                    'is_org_compliant' => true,
+                    'menu'             => array(
                         'slug'    => 'edit.php?post_type=ultimeter',
                         'support' => false,
                     ),
-                    'is_live'        => true,
+                    'is_live'          => true,
                 ) );
             }
             return $upgm_fs;
@@ -57,6 +63,7 @@ if ( function_exists( 'upgm_fs' ) ) {
         upgm_fs();
         // Signal that SDK was initiated.
         do_action( 'upgm_fs_loaded' );
+        // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Freemius SDK hook.
     }
     // Current version.
     define( 'ULTIMETER_VERSION', '3.0.8' );
@@ -101,11 +108,11 @@ if ( function_exists( 'upgm_fs' ) ) {
     /**
      * Flush rewrite rules on activation.
      */
-    function activate_ultimeter() {
+    function ultimeter_activate() {
         flush_rewrite_rules();
     }
 
-    register_activation_hook( __FILE__, 'activate_ultimeter' );
+    register_activation_hook( __FILE__, 'ultimeter_activate' );
     /**
      * The core plugin class that is used to define internationalization,
      * admin-specific hooks, and public-facing site hooks.
@@ -120,9 +127,9 @@ if ( function_exists( 'upgm_fs' ) ) {
      *
      * @since    1.0.0
      */
-    function run_ultimeter() {
+    function ultimeter_run() {
         $ultimeter = new Ultimeter();
     }
 
-    run_ultimeter();
+    ultimeter_run();
 }

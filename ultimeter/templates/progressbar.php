@@ -6,17 +6,21 @@
 if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
-$class = '';
-$image = false;
-$icon = false;
-$goal = get_post_meta( $meter['id'], '_ultimeter_progressbar_goal_toggle', true );
+/** @var array $meter Meter data from Ultimeter_Ultimeter::render(). */
+if ( empty( $meter ) || !is_array( $meter ) ) {
+    return;
+}
+$ultimeter_class = '';
+$ultimeter_image = false;
+$ultimeter_icon = false;
+$ultimeter_goal = get_post_meta( $meter['id'], '_ultimeter_progressbar_goal_toggle', true );
 ?>
 
 <div class="ultimeter_meter ultimeter_progressbar <?php 
-echo $class;
+echo esc_attr( $ultimeter_class );
 ?>">
 	<?php 
-if ( !empty( $goal ) && 1 == $goal ) {
+if ( !empty( $ultimeter_goal ) && 1 == $ultimeter_goal ) {
     ?>
 	<div class="ultimeter_meter_goal ultimeter_progressbar_goal">
 		<div class="ultimeter_meter_amount total-label ultimeter_progressbar_amount <?php 

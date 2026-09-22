@@ -6,10 +6,14 @@
 if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
-$size = $meter['styles']['size'];
+/** @var array $meter Meter data from Ultimeter_Ultimeter::render(). */
+if ( empty( $meter ) || !is_array( $meter ) ) {
+    return;
+}
+$ultimeter_size = $meter['styles']['size'];
 ?>
 <div class="ultimeter_meter ultimeter_thermometer <?php 
-echo esc_attr( $size );
+echo esc_attr( $ultimeter_size );
 ?>">
 	<div class="ultimeter_thermometer_tube_topper secondary-color"></div>
 	<div class="ultimeter_thermometer_tube secondary-color">

@@ -11,6 +11,10 @@
  * @since      2.4.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Ultimeter_Gutenberg_Block' ) ) {
 	/**
 	 * Class to manage Ultimeter Gutenberg Block
@@ -30,52 +34,93 @@ if ( ! class_exists( 'Ultimeter_Gutenberg_Block' ) ) {
 		 * @return void
 		 */
 		public function init() {
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'init', array( $this, 'register_block' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
 		}
 
 		/**
-		 * Register the JavaScript And Stylesheet for the Ultimeter Gutenberg Block.
+		 * Register the block type and its editor assets.
 		 *
-		 * @since    2.4.0
+		 * Must run on init so the block exists before block themes render
+		 * template HTML (which happens before wp_head / wp_enqueue_scripts).
+		 *
+		 * @since 2.4.0
 		 */
-		public function enqueue_scripts() {
-			/**
-			* The class responsible for defining all actions that occur for the Ultimeter Gutenberg Block.
-			*/
-			$ultimeter_obj = new Ultimeter();
-
-			if ( is_admin() ) {
-				// ultimeter-gutenberg-block script for Block.
-				wp_enqueue_script( 'ultimeter-gutenberg-block', plugin_dir_url( __FILE__ ) . 'assets/js/ultimeter-gutenberg-block.js', array( 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor', 'wp-compose' ), ULTIMETER_VERSION, false );
-
-				// ultimeter-gutenberg-block style for Block.
-				wp_enqueue_style( 'ultimeter-gutenberg-block', plugin_dir_url( __FILE__ ) . 'assets/css/ultimeter-gutenberg-block.css', array( 'wp-editor' ), ULTIMETER_VERSION, 'all' );
-			}
-
-			register_block_type(
-				'ultimeter-gutenberg-block/shortcode-gutenberg',
-				array(
-					'editor_script'   => 'ultimeter-gutenberg-block',
-					'render_callback' => array( $ultimeter_obj, 'create_shortcode' ),
-					'attributes'      => array(
-						'id' => array(
-							'type' => 'string',
-						),
-					),
-				)
+		public function register_block() {
+			$script_deps = array(
+				'wp-i18n',
+				'wp-element',
+				'wp-blocks',
+				'wp-components',
+				'wp-data',
+				'wp-server-side-render',
 			);
 
-			/* Define plugin logo image url global variable */
+			wp_register_script(
+				'ultimeter-gutenberg-block',
+				plugin_dir_url( __FILE__ ) . 'assets/js/ultimeter-gutenberg-block.js',
+				$script_deps,
+				ULTIMETER_VERSION,
+				true
+			);
+
 			wp_localize_script(
 				'ultimeter-gutenberg-block',
 				'ultimeterGlobal',
 				array(
-					'logoUrl' => plugin_dir_url( __DIR__ ) . 'admin/assets/images/ultimeter.png',
+					'logoUrl' => plugin_dir_url( __DIR__ ) . 'admin/assets/images/logo.svg',
 				)
 			);
 
+			wp_register_style(
+				'ultimeter-gutenberg-block',
+				plugin_dir_url( __FILE__ ) . 'assets/css/ultimeter-gutenberg-block.css',
+				array( 'wp-edit-blocks' ),
+				ULTIMETER_VERSION
+			);
+
+			register_block_type(
+				'ultimeter-gutenberg-block/shortcode-gutenberg',
+				array(
+					'api_version'     => 2,
+					'editor_script'   => 'ultimeter-gutenberg-block',
+					'editor_style'    => 'ultimeter-gutenberg-block',
+					'render_callback' => array( $this, 'render_block' ),
+					'attributes'      => array(
+						'id' => array(
+							'type'    => 'string',
+							'default' => '',
+						),
+					),
+				)
+			);
+		}
+
+		/**
+		 * Enqueue editor-only assets.
+		 *
+		 * @since 3.0.9
+		 */
+		public function enqueue_editor_assets() {
+			wp_enqueue_script( 'ultimeter-gutenberg-block' );
+			wp_enqueue_style( 'ultimeter-gutenberg-block' );
+		}
+
+		/**
+		 * Server-side render for the block. Same output as the shortcode.
+		 *
+		 * @param array $attributes Block attributes.
+		 * @return string
+		 */
+		public function render_block( $attributes ) {
+			$id = isset( $attributes['id'] ) ? absint( $attributes['id'] ) : 0;
+
+			if ( ! $id ) {
+				return '';
+			}
+
+			return do_shortcode( sprintf( '[ultimeter id="%d"]', $id ) );
 		}
 	}
 }
-$plugin_gutenberg_block = new Ultimeter_Gutenberg_Block();
+$ultimeter_gutenberg_block = new Ultimeter_Gutenberg_Block();

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Ultimeter_WooCommerce {
 
 	/**
@@ -218,11 +222,10 @@ class Ultimeter_WooCommerce {
 					that happen, by allowing you to display a percentage of the tracked amount.</p>
 				<p>Sometimes you don't ever want your campaign to start at zero. Or maybe you need to take in cash sales
 					from your physical store. Ultimeter can boost the tracked figure by an amount you choose.</p>
-				<a class="ultimeter-upsell-button button" href="<?php echo upgm_fs()->get_upgrade_url(); ?>">Upgrade
-					Now</a>
+				<a class="ultimeter-upsell-button button" href="<?php echo esc_url( upgm_fs()->get_upgrade_url() ); ?>"><?php esc_html_e( 'Upgrade Now', 'ultimeter' ); ?></a>
 			</div>
 			<div class="ultimeter-upsell-right">
-				<img alt="WooCommerce Integration logo" src="<?php echo plugin_dir_url( __DIR__ ) . '../../admin/assets/images/woo-upsell.png'; ?>">
+				<img alt="WooCommerce Integration logo" src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . '../../admin/assets/images/woo-upsell.png' ); ?>">
 			</div>
 		</div>
 

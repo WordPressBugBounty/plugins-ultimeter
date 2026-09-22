@@ -478,9 +478,12 @@ class Ultimeter_Ultimeter {
     public function render() {
         $meter = $this->get_meter();
         if ( $meter['debug'] ) {
-            $hide = ( $meter['debug']['debug_quietly'] ? ' style="display: none;"' : '' );
-            echo '<pre' . $hide . '>';
-            esc_html( print_r( $meter ) );
+            if ( !empty( $meter['debug']['debug_quietly'] ) ) {
+                echo '<pre style="display: none;">';
+            } else {
+                echo '<pre>';
+            }
+            echo esc_html( wp_json_encode( $meter, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) );
             echo '</pre>';
         }
         if ( upgm_fs()->is_not_paying() ) {
@@ -511,7 +514,7 @@ class Ultimeter_Ultimeter {
         ob_start();
         ?>
 		<style><?php 
-        echo $this->get_inline_css();
+        echo wp_kses( $this->get_inline_css(), array() );
         ?></style>
 		<div id="post-<?php 
         echo esc_attr( $meter['id'] );
@@ -531,7 +534,7 @@ class Ultimeter_Ultimeter {
         echo esc_attr( $meter['id'] );
         ?>"
 			 data-meter="<?php 
-        echo htmlspecialchars( json_encode( $meter ) );
+        echo esc_attr( wp_json_encode( $meter ) );
         ?>">
 			<?php 
         ?>

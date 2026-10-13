@@ -1,10 +1,10 @@
 === Ultimeter - the Ultimate Progress and Goals Meter ===
-Contributors: bouncingsprout
+Contributors: bouncingsprout, freemius
 Tags: progress bar, meter, fundraising, progress, goal
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.0
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ If you need more, users of our free version can get help over at our [support fo
 5. Example of celebrations
 
 == Changelog ==
+
+= 3.1.1 =
+* Freemius Upgrade
 
 = 3.1.0 =
 * WordPress version bump

@@ -5,7 +5,7 @@
  * Plugin Name:       Ultimeter - the Ultimate Progress and Goals Meter
  * Plugin URI:        https://ultimeter.app
  * Description:       The most advanced progress and goals meter for WordPress
- * Version:           3.1.0
+ * Version:           3.1.1
  * Requires at least: 6.0
  * Requires PHP:      7.0
  * Author:            Bouncingsprout Studio
